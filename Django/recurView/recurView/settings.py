@@ -34,7 +34,7 @@ PATH_TO_CORPUS = 'corpora/'
 PATH_TO_TEMPLATES = 'templates/'
 
 # name of the user sharing all his corpora
-SHARED_CORPUS_ACCOUNT = "panda"
+SHARED_CORPUS_ACCOUNT = "admin"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
