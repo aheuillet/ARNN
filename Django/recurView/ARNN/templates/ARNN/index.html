@@ -1,0 +1,645 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{{ block.super }}
+<!--
+Pb pour la reduction des fenetres-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="..">
+            <img src="/static/ARNN/logo.ico"></a>
+        <!-- Brand and toggle get grouped for better mobile display
+          -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="nav navbar-nav">
+                <div class="dropdown" data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                     data-content="This menu allows you to create new neural network templates. Note that you must create a template in order to create a network.">
+                    <!-- bouton deroulant -->
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="templatesDropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Templates
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateModal">New
+                            template</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateListModal">Load</a>
+                        <a class="dropdown-item" href="#">Download</a>
+                        <a class="dropdown-item" href="#">Upload</a>
+                    </div>
+                </div>
+            </div>
+            &nbsp;
+            <div class="nav navbar-nav">
+                <div class="dropdown" data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                     data-content="This menu allows you to create and load neural networks">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="networkdropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Networks
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkModal">New
+                            network</a>
+                        <a class="dropdown-item" id="delete_net_button" href="#">Delete</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Download</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkListModal">Load</a>
+                        <a class="dropdown-item" href="#" id="save_button">Save Current</a>
+                    </div>
+                </div>
+            </div>
+            &nbsp;
+            <div class="nav navbar-nav">
+                <div class="dropdown" data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                     data-content="This menu allows you to create new corpora from CSV files">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="corpusDropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Corpora
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusModal">New
+                            corpus</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusListModal">Delete a
+                            corpus</a>
+                        <a class="dropdown-item" href="#">Download</a>
+                        <a class="dropdown-item" href="#">Upload</a>
+                    </div>
+                </div>
+            </div>
+            &nbsp;
+            <div class="nav navbar-nav ml-auto">
+                <div class="dropdown">
+                    <button class="btn btn-info dropdown-toggle" type="button" id="userDropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Welcome, {{ user.username }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/admin"><i class="fas fa-cog"></i> Administration</a>
+                        <a class="dropdown-item" href="/accounts/reset-password"><i class="fas fa-key"></i> Change
+                            password</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/accounts/logout"><i class="fas fa-power-off"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- colonne haut -->
+<!-- il faut enlever la bande blanche entre colonne haut et bas -->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-lg-2 bg-secondary">
+            <div class="alert alert-dark text-center">
+                <h4 class="alert-heading">Information</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-8 bg-light" style="padding-left:10px; padding-right:10px;">
+            <div class="alert alert-info text-center">
+                <h4 class="alert-heading">Networks</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-2 bg-secondary">
+            <div class="alert alert-dark text-center">
+                <h4 class="alert-heading">Controls</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="height: 100%;">
+        <div class="col-lg-2 bg-secondary" style=' padding-top: 10px;'>
+            <div id="infosNet"></div>
+        </div>
+        <div class="col-lg-8 bg-light" style=' padding-top: 10px;'>
+            <div id="tabs">
+                <ul id="myNetworks">
+
+                </ul>
+
+                <br/>
+
+                <div id="myNetworksContent">
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-2 bg-secondary" style=' padding-top: 10px;'>
+            <div class="card" align='left'>
+                <div class="card-body">
+                    <button id="button_play" type="button" class="btn" style="font-size:24px"
+                            onclick="window.location.href='#'" data-toggle="popover" data-trigger="hover"
+                            data-placement="right" title="Hint"
+                            data-content="Click here to start or stop the current network. Note that you can only start a network if you have had at least one task. ">
+                        <i
+                                class="fas fa-play" aria-hidden="true"></i>
+                    </button>
+
+                    <button id="button_recompute" type="button" class="btn" style="font-size:24px"
+                            onclick="window.location.href='#'" data-toggle="popover" data-trigger="hover"
+                            data-placement="right" title="Hint"
+                            data-content="Click here to recompute all hte previously added observables.">
+                        <i class="fas fa-redo" aria-hidden="true"></i>
+                    </button>
+                    <br/>
+                    <div data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                         data-content="This menu allows you to add a new task (training or testing) to the currently loaded network. It is necessary to add at least one task to network before trying to run it.">
+                        <button id="add_task" type="button" class="btn" style="font-size:17px" data-toggle="modal"
+                                data-target="#taskModal">Add Task
+                        </button>
+                    </div>
+                    <br/>
+                    <div data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                         data-content="This menu allows you to add a new observable to the currently loaded network. This observable will appear as a graph in the middle section of the page and will be computed once the network will have finished his next run.">
+                        <button id="add_observable" type="button" class="btn" style="font-size:17px" data-toggle="modal"
+                                data-target="#observableModal">
+                            Add Observable
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+        const local_route = "/accounts/";
+        $('[data-toggle*="popover"]').popover();
+
+        function build_loaded_nets() {
+            $.ajax({
+                type: "GET",
+                url: local_route + "control/",
+                data: {
+                    method: "get_loaded_nets",
+                },
+                success: function (data) {
+                    clear_tabs();
+                    for (const i in data) {
+                        build_tab(data[i]);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    handleHttpError(XMLHttpRequest.status);
+                }
+            });
+        }
+
+        function clear_tabs() {
+            $('#infosNet').empty();
+            $("div#tabs #myNetworks").empty();
+            $("div#tabs #myNetworksContent").empty();
+        }
+
+        function build_tab(json_data) {
+            const netid = json_data["pk"];
+
+            $("div#tabs #myNetworks").append(
+                '<li style="display: flex; align-items: center;" data-pkey="' + netid + '">' +
+                '   <a href="#myNetworksContent">' + json_data["fields"]["name"] + '</a>' +
+                '   <button style="margin-right: 4px" type="button" class="close" id="close_net' +
+                netid +
+                '" aria-label="Close">' +
+                '       <span aria-hidden="true">X</span>' +
+                '   </button>' +
+                '</li>'
+            );
+
+            $("div#tabs").tabs("refresh");
+
+
+            $('#close_net' + netid).on('click', function () {
+                $.when(
+                    save_net(netid),
+                ).done(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: local_route + "control/",
+                        data: {
+                            method: "remove_network",
+                            network_ID: netid
+                        },
+                        success: function () {
+                            $('#infosNet').empty();
+
+                            const tabli = $('#close_net' + netid).closest("li");
+                            const selected_idx = get_active_tab_index();
+                            if (tabli.index() === selected_idx)
+                                $('#tabs').tabs({
+                                    active: selected_idx - 1
+                                });
+                            tabli.remove();
+                            $('#tab_net' + netid).remove();
+                            $("div#tabs").tabs("refresh");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Can't remove this network!");
+                        }
+                    })
+                });
+            });
+
+            $('#tabs').tabs({
+                active: -1
+            });
+        }
+
+
+        build_loaded_nets();
+
+
+        function build_modal(type, form = undefined, route = "") {
+
+            let modal = '<div class="modal fade" id="' + type +
+                'Modal" tabindex="-1" role="dialog" aria-hidden="true">' +
+                '    <div class="modal-dialog" role="document">' +
+                '        <div class="modal-content">';
+
+            if (form) {
+
+                modal +=
+                    '   <div id="' + type + 'Body" class="modal-body">' +
+                    '      <form class="modal_form" action="' + route + '" id="' + type +
+                    '_form" method="post" enctype="multipart/form-data">' +
+                    '               {% csrf_token %}' +
+                    '                <table class="table">' + form + '</table>' +
+                    '                <div class="modal-footer">' +
+                    '                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+                    '                    <button type="submit" id="' + type +
+                    'Confirm" class="btn btn-primary">Submit</button>' +
+                    '                </div>' +
+                    '            </form>' +
+                    '   </div>';
+            } else {
+                modal +=
+                    '<table class="table modal-body">' +
+                    '   <thead>' +
+                    '       <tr>' +
+                    '           <th scope="col">Name</th>' +
+                    '       </tr>' +
+                    '   </thead>' +
+                    '   <tbody id="' + type + 'Body"> </tbody>' +
+                    '</table>'
+            }
+
+            modal +=
+                '        </div>' +
+                '    </div>' +
+                '</div>';
+
+
+            $("body").append(modal);
+        }
+
+        build_modal("corpus", '{% spaceless %}{{corpus_form.as_table}}{% endspaceless %}', local_route +
+            "corpus/create");
+        build_modal("network", '{% spaceless %}{{network_form.as_table}}{% endspaceless %}', local_route +
+            "network/create");
+        build_modal("template", '{% spaceless %}{{template_form.as_table}}{% endspaceless %}', local_route +
+            "template/create");
+        build_modal("task", '{% spaceless %}{{task_form.as_table}}{% endspaceless %}');
+        build_modal("observable", '{% spaceless %}{{observable_form.as_table}}{% endspaceless %}');
+        build_modal("corpusList");
+        build_modal("networkList");
+        build_modal("templateList");
+
+        if ($('.modal ul.errorlist').length > 0) {
+            $('.modal ul.errorlist').closest('.modal').modal('show')
+        }
+
+
+        function get_active_tab_index() {
+            return $('#tabs').tabs('option', 'active')
+        }
+
+        function get_active_net_pk() {
+            return $('#tabs > ul > li').eq(get_active_tab_index()).attr('data-pkey');
+        }
+
+        function load_net(json_data, build = true) {
+            return $.ajax({
+                type: "GET",
+                url: local_route + "control/",
+                data: {
+                    method: "load_network",
+                    network_ID: json_data["pk"]
+                },
+                success: function () {
+                    if (build)
+                        build_tab(json_data);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    handleHttpError(XMLHttpRequest.status);
+                }
+            })
+        }
+
+        $("#network_form").submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                success: function (data) {
+                    $.when(
+                        load_net(data[0], false)
+                    ).done(function () {
+                        window.location = local_route;
+                    })
+                }
+            });
+        });
+
+
+        $('#task_form').submit(function (e) {
+
+            e.preventDefault();
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+
+                $.ajax({
+                    type: "GET",
+                    url: local_route + "control/",
+                    data: {
+                        method: "add_task",
+                        network_ID: net,
+                        corpusID: $('#id_corpus').val(),
+                        start: $('#id_start').val(),
+                        stop: $('#id_stop').val(),
+                        task: $('#id_kind_task').val()
+                    },
+                    success: function () {
+                        window.location = local_route;
+                        build_infos_net(get_active_net_pk());
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        window.location = local_route;
+                        handleHttpError(XMLHttpRequest.status);
+                    }
+                })
+            }
+        });
+
+        $('#observable_form').submit(function (e) {
+            e.preventDefault();
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+
+                $.ajax({
+                    type: "GET",
+                    url: local_route + "control/",
+                    data: {
+                        method: "add_observable",
+                        network_ID: net,
+                        periodicity: $('#id_periodicity').val(),
+                        observable: $('#id_observable').val()
+                    },
+                    success: function () {
+                        window.location = local_route;
+                        build_infos_net(get_active_net_pk());
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        window.location = local_route;
+                        handleHttpError(XMLHttpRequest.status);
+                    }
+                })
+            }
+        });
+
+
+        $('#button_recompute').on('click', function () {
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+                $.ajax({
+                    type: "GET",
+                    url: local_route + "control/",
+                    data: {
+                        method: "re_roll_observables",
+                        network_ID: net
+                    },
+
+                    success: function () {
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Can't re compute the observables")
+                    }
+                })
+            }
+        });
+
+        $('#button_play').on('click', function () {
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+                $.ajax({
+                    type: "GET",
+                    url: local_route + "control/",
+                    data: {
+                        method: "toggle_run",
+                        network_ID: net
+                    },
+
+                    success: function () {
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Can't play/pause this network!")
+                    }
+                })
+            }
+        });
+
+        $('#save_button').on('click', function () {
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+                save_net(net);
+            }
+        });
+
+
+        function handleHttpError(errorStatus) {
+            if (errorStatus === 403) //Forbidden
+                window.location = local_route + 'login/';
+        }
+
+        function delete_entity(pk, kind, rowToRemove = undefined) {
+            $.ajax({
+                type: "GET",
+                url: local_route + kind + "/delete/" + pk + "/",
+                success: function () {
+                    $('#infosNet').empty();
+                    build_loaded_nets();
+                    if (rowToRemove !== undefined)
+                        build_list(kind);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Can't delete this " + kind + "!")
+                }
+            })
+        }
+
+        $('#delete_net_button').on('click', function () {
+            const net = get_active_net_pk();
+            if (net) { //if the tab exists
+                delete_entity(net, "network")
+            }
+        });
+
+
+        function save_net(netid) {
+            if (confirm("Save this network?")) {
+                return $.ajax({
+                    type: "GET",
+                    url: local_route + "control/",
+                    data: {
+                        method: "save_network",
+                        network_ID: netid
+                    },
+                    success: function () {
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Can't save this network!");
+                    }
+                })
+            }
+        }
+
+
+        function build_infos_net(pk) {
+            $.ajax({
+                type: "GET",
+                url: local_route + "control/",
+                data: {
+                    method: "get_network_info",
+                    network_ID: pk
+                },
+
+                success: function (data) {
+                    $('#infosNet').empty();
+                    $('#infosNet').append('<div class="card" id="cardInfos"></div>');
+                    $('#cardInfos').append('<div class="card list-group" id="cardBodyInfos"></div>');
+
+                    for (const i in data)
+                        $('#cardBodyInfos').append(
+                            '<p style="padding: 6px" class="d-flex justify-content-between align-items-center">' +
+                            i + '<span class="badge badge-primary badge-pill">' + data[i] +
+                            '</span></p>');
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $('#infosNet').empty();
+                    alert("No informations on this network!")
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: local_route + "control/",
+                data: {
+                    method: "get_plots",
+                    network_ID: pk
+                },
+
+                success: function (data) {
+                    $('#myNetworksContent').html(data)
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Can't load graphs for this network!")
+                }
+            })
+
+        }
+
+        $('#tabs').tabs({
+            activate: function (event, ui) {
+                build_infos_net(get_active_net_pk());
+
+            }
+        });
+
+        function build_list(kind) {
+            const list = document.getElementById(kind + "ListBody");
+            list.innerHTML = "";
+
+            $.ajax({
+                type: "GET",
+                url: local_route + kind + "/list",
+
+                success: function (data) {
+                    for (const i in data) {
+
+                        const json_data = data[i];
+                        let netid = json_data["pk"];
+
+                        const fields = json_data["fields"];
+                        let row = document.createElement("tr");
+                        row.id = "id_" + kind + netid;
+                        let nametd = document.createElement("td");
+                        nametd.innerText = fields["name"];
+                        row.appendChild(nametd);
+
+                        if (kind === "network") {
+                            let loadtd = document.createElement("td");
+                            let loadbutton = document.createElement("button");
+                            loadbutton.onclick = function () {
+                                load_net(json_data);
+                            };
+                            loadbutton.className = "btn btn-primary btn-sm";
+                            loadbutton.innerText = "Load";
+                            loadtd.appendChild(loadbutton);
+                            row.appendChild(loadtd);
+                        }
+
+                        let deletetd = document.createElement("td");
+                        let deletebutton = document.createElement("button");
+                        deletebutton.onclick = function () {
+                            delete_entity(json_data["pk"], kind, row.id);
+                        };
+                        deletebutton.className = "btn btn-danger btn-sm";
+                        deletebutton.innerText = "X";
+                        deletetd.appendChild(deletebutton);
+                        row.appendChild(deletetd);
+
+                        list.appendChild(row);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    handleHttpError(XMLHttpRequest.status);
+                }
+            })
+        }
+
+        $('#templateListModal').on('show.bs.modal', function () {
+            build_list("template");
+        });
+
+        $('#networkListModal').on('show.bs.modal', function () {
+            build_list("network");
+        });
+
+        $('#corpusListModal').on('show.bs.modal', function () {
+            build_list("corpus");
+        });
+
+    });
+</script>
+{% endblock %}

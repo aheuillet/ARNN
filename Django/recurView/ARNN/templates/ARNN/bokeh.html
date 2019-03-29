@@ -1,0 +1,16 @@
+{% for plot in plots %}
+<div class="card text-center" id="{{ plot.name }}">
+    <div class="card-header">
+        <button type="button" class="close" aria-label="Close" onclick="delete_plot({{ plot.name }})">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h5>{{ plot.verbose_name }}</h5>
+    </div>
+    <div class="card-body">
+        {% for part in plot.plot %}
+        {{ part | safe }}
+        {% endfor %}
+    </div>
+</div>
+<br />
+{% endfor %}

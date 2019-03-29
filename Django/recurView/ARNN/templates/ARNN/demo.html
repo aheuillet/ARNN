@@ -1,0 +1,117 @@
+{% extends 'header.html' %}
+
+{% block content %}
+{{ block.super }}
+<!--
+Pb pour la réduction des fenetres-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="..">
+            <img src="/static/ARNN/logo.ico"></a>
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>-->
+        <!-- Brand and toggle get grouped for better mobile display
+          -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <div class="col-lg-8 text-left">
+            <strong>Demo mode<strong>
+        </div>
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- colonne haut -->
+<!-- il faut enlever la bande blanche entre colonne haut et bas -->
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div class="col-sm-2 bg-secondary">
+            <h1 style="color: #ffffff; font-size: 20px; padding-left:20px; padding-top: 10px;">Information :</h1>
+        </div>
+
+        <div class="col-lg-8 bg-light" style="padding-left:10px; padding-right:10px;">
+            <h1 style="color: #0070c0; font-size: 20px; padding-left:300px; padding-top: 10px;">Networks :</h1>
+        </div>
+
+        <div class="col-lg-2 bg-secondary">
+            <h1 style="color: #ffffff; font-size: 20px; padding-left:20px; padding-top: 10px;">Settings :</h1>
+        </div>
+
+    </div>
+    <div class="row ">
+        <div class="col-sm bg-secondary" style='min-height: 600px; padding-top: 10px;'>
+            <!-- <form class="form-horizontal">
+                <div class="list-group-item">
+                    <div class="form-group">
+                        <label for="spectralradius" class="col-sm-6 control-label">Spectral radius:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="spectralradius" placeholder="" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-group-item">
+                    <div class="form-group">
+                        <label for="sparseness" class="col-sm-6 control-label">Sparseness:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="sparseness" placeholder="" readonly>
+                        </div>
+                    </div>
+                </div>
+            </form> -->
+        </div>
+        <div class="col-lg-8 bg-light" style='min-height: 600px; padding-top: 10px;'>
+            <div id="tabsDiv">
+                <ul class="nav nav-tabs" id="myNetworks">
+
+                </ul>
+            </div>
+            {% for plot in plots %}
+            <div class="card text-center" id="{{ plot.name }}">
+                <div class="card-header">
+                    <button type="button" class="close" aria-label="Close"
+                            onclick="$(this).closest('.card').fadeOut();">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5>{{ plot.verbose_name }}</h5>
+                </div>
+                <div class="card-body">
+                    {% for part in plot.plot %}
+                    {{ part | safe }}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="col-lg-2 bg-secondary" style='min-height: 600px; padding-top: 10px;'>
+            <div class="navbar-header" align='center'>
+                <button id="button_backward" style="font-size:24px" onclick="window.location.href='#'"><i
+                        class="fa fa-backward"
+                        aria-hidden="true"></i></button>
+                <button id="button_play" style="font-size:24px" onclick="window.location.href='#'"><i class="fa fa-play"
+                                                                                                      aria-hidden="true"></i>
+                </button>
+
+                <button id="button_forward" style="font-size:24px" onclick="window.location.href='#'"><i
+                        class="fa fa-forward"
+                        aria-hidden="true"></i></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
