@@ -34,7 +34,6 @@ class NetworkForm(forms.ModelForm):
 
     def __init__(self, user, *args, **kwargs):
             super(NetworkForm, self).__init__(*args, **kwargs)
-            print(user)
             self.fields['template'].queryset = Template.objects.filter(owner=user)
 
 
@@ -68,9 +67,7 @@ class TaskForm(forms.Form):
     def __init__(self, *args, **kwargs):
         requser = kwargs.pop('user', None)
         super(TaskForm, self).__init__(*args, **kwargs)
-        if requser:
-            print(requser)
-            self.fields['corpus'].queryset = Corpus.objects.filter(owner=requser)
+        self.fields['corpus'].queryset = Corpus.objects.filter(owner=requser)
 
 
 class ObservableForm(forms.Form):

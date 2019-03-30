@@ -69,6 +69,6 @@ def generate_n(file_in, file_out, size, dim, min, max, n, seed):
 
 generate_n("file_in_1_backing.csv", "file_out_1_backing.csv", 4000, 1, 0, 15, 1, -1)
 
-generate_shape("file_in.csv", "file_out.csv", 4000, 3, 0, 20, -1)
+# generate_shape("file_in.csv", "file_out.csv", 4000, 3, 0, 20, -1)
 
 

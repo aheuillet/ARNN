@@ -167,7 +167,6 @@ class NetworkRunner(threading.Thread):
 
     def compute_all_observables(self, begin):
         for i in range(len(self.obs_list)):
-                #print(begin, len(self.input), self.task_list)
                 for x in range(begin, len(self.input), self.obs_list[i][1]):
                     self.x = x
                     self.calculated_obs[self.obs_list[i][0]][1].append(self.compute_observable(self.obs_list[i][0]))
@@ -237,6 +236,7 @@ class NetworkRunner(threading.Thread):
             del self.calculated_obs[observable]
 
     def compute_observable(self, observable):
+        print("coucou")
         if (observable == "Spectral Radius"):
             return get_spectral_radius(self.network.W)
         elif (observable == 'Predicted Output'):
@@ -248,26 +248,30 @@ class NetworkRunner(threading.Thread):
         elif (observable == 'Input'):
             return self.input[self.x].tolist()
         elif (observable == 'Rmse'):
-            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.input), np.array(self.predicted_output), np.array(self.expected_output), 0, False)
+            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
             return rmse
         elif (observable == "Mse"):
-            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.input), np.array(self.predicted_output), np.array(self.expected_output), 0, False)
+            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
             return mse
         elif (observable == "Nmrse maxmin"):
-            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.input), np.array(self.predicted_output), np.array(self.expected_output), 0, False)
+            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
             return nmrse_maxmin
         elif (observable == "Nmrse mean"):
-            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.input), np.array(self.predicted_output), np.array(self.expected_output), 0, False)
+            nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
             return nmrse_mean
         return 0
 
     def auto_save(self):
-        net = get_object_or_404(Network, pk=self.pk)
-        path = os.path.join(os.path.join(settings.PATH_TO_USERS_FOLDER, str(net.owner.username)), settings.PATH_TO_NETWORKS)
-        file = os.path.join(path, str(net.pk)+"~")
-        self.save_data(file)
-        net.auto_saved = True
-        net.save()
+        try :
+            net = get_object_or_404(Network, pk=self.pk)
+        except :
+            print("demo")
+        else:
+            path = os.path.join(os.path.join(settings.PATH_TO_USERS_FOLDER, str(net.owner.username)), settings.PATH_TO_NETWORKS)
+            file = os.path.join(path, str(net.pk)+"~")
+            self.save_data(file)
+            net.auto_saved = True
+            net.save()
 
 
     def save(self, username, name):

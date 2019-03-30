@@ -21,9 +21,6 @@ def handle_uploaded_data(file_in, file_out, username, dataname):
             out.append([int(i) for i in l])
     np.save( dataname +"_in.npy", inp)
     np.save( dataname +"_out.npy", out)
-    # os.remove(os.path.join(settings.PATH_TO_USERS_FOLDER + username, settings.PATH_TO_CORPUS) + dataname + "out")
-    # os.remove(os.path.join(settings.PATH_TO_USERS_FOLDER + username, settings.PATH_TO_CORPUS) + dataname + "in")
-
 
 def delete_corpus_data(username, dataname):
     try:
@@ -84,8 +81,6 @@ def create(request):
                 new_corpus.save()
                 handle_uploaded_data(new_corpus.path+"out.csv", new_corpus.path+"in.csv", request.user.username, new_corpus.path+ "_" + str(new_corpus.pk))
             else:
-                #print(correct(new_corpus.path+"out.csv"), correct(new_corpus.path+"in.csv"), (size(new_corpus.path+"in.csv") == size(new_corpus.path+"out.csv")))
-                #messages.info('Error: Form is not valid')
                 return HttpResponseBadRequest('Error: Form is not valid')
             new_corpus.size = size(new_corpus.path+"in.csv")
             new_corpus.dim_in = dim(new_corpus.path+"in.csv")

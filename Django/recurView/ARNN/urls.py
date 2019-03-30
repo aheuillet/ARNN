@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from . import views
-from . import bokeh
+from . import demo
 
 urlpatterns = [
     path('', login_required(csrf_exempt(views.index)), name='index'),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('reset-password/confirm/', PasswordResetConfirmView.as_view(), name='reset_password_confirm'),
     path('reset-password/complete/', PasswordResetCompleteView.as_view(), name='reset_password_complete'),
     path('control/', csrf_exempt(networkcontrol.NetworkRunControl.as_view()), name='control'),
-    path('demo/', bokeh.demo, name='demo'),
-    path('demo/data/', bokeh.data_demo, name='demo_data'),
+    path('demo/', demo.demo, name='demo'),
+    path('demo/data/', demo.data_demo, name='demo_data'),
     url('^', include('django.contrib.auth.urls'))
 ]

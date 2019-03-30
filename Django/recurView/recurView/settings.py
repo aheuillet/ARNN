@@ -27,7 +27,7 @@ PATH_TO_USERS_FOLDER = os.path.join(BASE_DIR, 'users/')
 # path to the user's networks
 PATH_TO_NETWORKS = 'networks/'
 
-# path to the user's corpuses
+# path to the user's corpora
 PATH_TO_CORPUS = 'corpora/'
 
 # path to the user's network templates
