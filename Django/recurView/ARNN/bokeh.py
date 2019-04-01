@@ -12,7 +12,7 @@ from django.db import models
 from django.shortcuts import get_object_or_404
 from .models import Template, Network
 
-def make_ajax_plot(observable, network_ID):
+def make_ajax_plot(observable, dim, network_ID):
     """This function is used to create a new Bokeh instance to send to the view.
 
         Inputs:
@@ -21,10 +21,13 @@ def make_ajax_plot(observable, network_ID):
     """
     source = AjaxDataSource(method='GET', data_url=resolve_url('control') + "?method=get_observable&observable=" + str(observable) + "&network_ID=" + str(network_ID),
                             polling_interval=3000, mode='replace')
-    source.data = dict(x=[], y=[])
+    source.data = dict(x=[])
+    for i in range(dim):
+        source.data["y"+str(i)]=[]
 
     plot = figure(plot_height=200, sizing_mode='scale_width')
-    plot.line('x', 'y', source=source, line_width=4)
+    for i in range(dim):
+        plot.line('x', 'y'+str(i), source=source, line_width=2)
     plot.xaxis.axis_label = "Iterations over time"
 
     script, div = components(plot, CDN)

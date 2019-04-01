@@ -18,12 +18,6 @@ def compute_error_NRMSE(teacher_signal, predicted_signal, verbose=False):
     """
     mse = np.mean((teacher_signal - predicted_signal)**2)
     rmse = np.sqrt(mse)
-    nmrse_mean = abs(rmse / np.mean(test_out[:])) # Normalised RMSE (based on mean)
-    nmrse_maxmin = rmse / abs(np.max(test_out[:]) - np.min(test_out[:])) # Normalised RMSE (based on max - min)
-    if verbose:
-        print("Errors computed over %d time steps" % (errorLen))
-        print("\nMean Squared error (MSE):\t\t%.4e" % (mse) )
-        print("Root Mean Squared error (RMSE):\t\t%.4e\n" % rmse )
-        print("Normalized RMSE (based on mean):\t%.4e" % (nmrse_mean) )
-        print("Normalized RMSE (based on max - min):\t%.4e" % (nmrse_maxmin) )
+    nmrse_mean = abs(rmse / np.mean(teacher_signal[:])) # Normalised RMSE (based on mean)
+    nmrse_maxmin = rmse / abs(np.max(teacher_signal[:]) - np.min(teacher_signal[:])) # Normalised RMSE (based on max - min)
     return nmrse_mean, nmrse_maxmin, rmse, mse

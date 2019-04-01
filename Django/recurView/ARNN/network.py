@@ -52,6 +52,7 @@ class NetworkRunner(threading.Thread):
             Inputs:
             -pk: An int is the primary key of the network entry in the database.
             -username: A string containing the name of the owner of the netxork.
+            -
 
             Output:
             The networkRunner corresponding to the database entry.
@@ -161,8 +162,8 @@ class NetworkRunner(threading.Thread):
             self.compute_all_observables(self.last_iteration)    
             if (self.task_list[self.current_task_num - 1][0] == "test"):
                 self.last_iteration += len(self.task_list[self.current_task_num - 1][2])
-            print(self.calculated_obs)
             self.auto_save()
+            print(self.calculated_obs)
         self.play = False
 
     def compute_all_observables(self, begin):
@@ -184,10 +185,12 @@ class NetworkRunner(threading.Thread):
             Ouputs:
             returns False if it couldn't add the task, True otherwise.
         """
+        print("\n", path, "\n")
         if ((task=="Test") and (self.network.Wout is None) and not("Train" in [i[0] for i in self.task_list])):#check if the network has been trained before running
             return False
         if not(self.play):#a task can only be added if the network is not running
             inp, out = self.load_corpus(path)
+            print(inp, out, inp.shape, out.shape)
             if (inp.shape[1] != self.dim_input) or (out.shape[1] != self.dim_output):
                 return False
             self.task_list.append([task, inp[start:stop], out[start:stop]])
@@ -236,9 +239,8 @@ class NetworkRunner(threading.Thread):
             del self.calculated_obs[observable]
 
     def compute_observable(self, observable):
-        print("coucou")
         if (observable == "Spectral Radius"):
-            return get_spectral_radius(self.network.W)
+            return np.array([get_spectral_radius(self.network.W)]).tolist()
         elif (observable == 'Predicted Output'):
             return self.predicted_output[self.x].tolist()
         elif (observable == 'Expected Output'):
@@ -249,17 +251,37 @@ class NetworkRunner(threading.Thread):
             return self.input[self.x].tolist()
         elif (observable == 'Rmse'):
             nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
-            return rmse
+            return np.array([rmse]).tolist()
         elif (observable == "Mse"):
             nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
-            return mse
+            return np.array([mse]).tolist()
         elif (observable == "Nmrse maxmin"):
             nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
-            return nmrse_maxmin
+            return np.array([nmrse_maxmin]).tolist()
         elif (observable == "Nmrse mean"):
             nmrse_mean, nmrse_maxmin, rmse, mse = compute_error_NRMSE(np.array(self.expected_output), np.array(self.predicted_output), False)
-            return nmrse_mean
+            return np.array([nmrse_mean]).tolist()
         return 0
+
+    def size_observable(self, observable):
+        if (observable == "Spectral Radius"):
+            return 1
+        elif (observable == 'Predicted Output'):
+            return self.dim_output
+        elif (observable == 'Expected Output'):
+            return self.dim_output
+        elif (observable == 'Reservoir States'):
+            return self.network.N
+        elif (observable == 'Input'):
+            return self.dim_input
+        elif (observable == 'Rmse'):
+            return 1
+        elif (observable == "Mse"):
+            return 1
+        elif (observable == "Nmrse maxmin"):
+            return 1
+        elif (observable == "Nmrse mean"):
+            return 1
 
     def auto_save(self):
         try :

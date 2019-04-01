@@ -33,9 +33,8 @@ Pb pour la reduction des fenetres-->
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateModal">New
                             template</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateListModal">Load</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateListModal">Delete</a>
                         <a class="dropdown-item" href="#">Download</a>
-                        <a class="dropdown-item" href="#">Upload</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +49,6 @@ Pb pour la reduction des fenetres-->
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkModal">New
                             network</a>
-                        <a class="dropdown-item" id="delete_net_button" href="#">Delete</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Download</a>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkListModal">Load</a>
@@ -73,7 +71,6 @@ Pb pour la reduction des fenetres-->
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusListModal">Delete a
                             corpus</a>
                         <a class="dropdown-item" href="#">Download</a>
-                        <a class="dropdown-item" href="#">Upload</a>
                     </div>
                 </div>
             </div>
@@ -391,7 +388,7 @@ Pb pour la reduction des fenetres-->
                     },
                     success: function () {
                         window.location = local_route;
-                        build_infos_net(get_active_net_pk());
+                        build_infos_net(net);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         window.location = local_route;
@@ -417,7 +414,7 @@ Pb pour la reduction des fenetres-->
                     },
                     success: function () {
                         window.location = local_route;
-                        build_infos_net(get_active_net_pk());
+                        build_infos_net(net);
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         window.location = local_route;
@@ -497,6 +494,23 @@ Pb pour la reduction des fenetres-->
             })
         }
 
+        function delete_plot(plot){
+          $.ajax({
+              type: "GET",
+              url: local_route + "control/",
+              data: {
+                  method: "delete_plot",
+                  network_ID: get_active_net_pk(),
+                  plotID: plot
+              },
+              success: function () {
+                $("'#"+plot+"'").remove();
+              },
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                  alert("Can't delete this plot!");
+              }
+          })
+        }
         $('#delete_net_button').on('click', function () {
             const net = get_active_net_pk();
             if (net) { //if the tab exists

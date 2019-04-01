@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/env python -W ignore::DeprecationWarning
-
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseForbidden, HttpResponseRedirect, JsonResponse
 from django.views import View
 from django.shortcuts import redirect, render, get_object_or_404, get_list_or_404
@@ -12,6 +11,7 @@ from django.contrib import messages
 from .models import Network, Corpus, Template
 from .forms import NetworkForm
 from . import network as net
+import numpy as np
 import os
 
 
@@ -40,9 +40,13 @@ class NetworkRunControl(View):
             network_ID = request.GET.get("network_ID", None)
             if (toexec == "get_plots"):
                 return self.get_plots(request, network_ID)
-            if (toexec == "get_loaded_nets"):
+
+            elif (toexec == "delete_plot"):
+                plotID = request.GET.get("plotID", None)
+                return self.delete_plot(request, network_ID, plotID)
+            elif (toexec == "get_loaded_nets"):
                 return self.get_loaded_nets(user)
-            if (toexec == "add_task"):
+            elif (toexec == "add_task"):
                 corpusID = request.GET.get("corpusID", None)
                 start = request.GET.get("start", None)
                 stop = request.GET.get("stop", None)
@@ -54,12 +58,21 @@ class NetworkRunControl(View):
                 return self.add_observable(request, user, network_ID, observable, periodicity)
             elif (toexec == "get_observable"):
                 observable = request.GET.get("observable", None)
-                return self.get_observable(request, user, observable, network_ID)    
+                return self.get_observable(request, user, observable, network_ID)
+            elif (toexec == "list"):
+                return self.list_net(request)
             else:
                 # : This line allow to compress the code by directly executing the command passed by request
                 return getattr(self, toexec)(request, user, network_ID)
         else:
             return HttpResponseForbidden("not logged")
+
+    def delete_plot(request, network_ID, plotID):
+        user=request.user.username
+        if(plotID in self.plots[user.username][network_ID]):
+            del self.networks[user.username][network_ID][plotID]
+            return HttpResponse()
+        return HttpResponseNotFound()
 
     def get_network_info(self, request, user, network_ID):
         if not (self.exist_entry(user.username, network_ID)):
@@ -82,7 +95,8 @@ class NetworkRunControl(View):
             return HttpResponseBadRequest("This network doesn't exist")
         else:
             for obs in self.networks[user.username][network_ID].calculated_obs:
-                obs = [[], []]
+                print(obs)
+                self.networks[user.username][network_ID].calculated_obs[obs] = [[], []]
             self.networks[user.username][network_ID].compute_all_observables(0)
             return HttpResponse('reloaded')
 
@@ -135,12 +149,13 @@ class NetworkRunControl(View):
         else:
             data = self.networks[user.username][network_ID].get_observable()[observable]
             data2 = {
-                "x": data[0],
-                "y": data[1]
+                "x": data[0]
             }
-            print(data2)
+            for i in range(len((list(np.array(data[1]).T)))):
+                data2["y"+str(i)] = [float(a) for a in (list(np.array(data[1]).T[i]))]
+
             return JsonResponse(data2, safe=False)
- 
+
 
 
     def exist_entry(self, username, network_ID):
@@ -267,8 +282,9 @@ class NetworkRunControl(View):
             if (network_ID not in self.plots[user.username]):
                 self.plots[user.username][network_ID] = []
             if (len(self.plots) < settings.MAX_BOKEH):
+                print("coucou plot")
                 self.networks[user.username][network_ID].add_observable(observable, int(periodicity))
-                self.plots[user.username][network_ID].append({'plot': make_ajax_plot(observable, network_ID), 'name':"bokeh_" + str(len(self.plots)), 'verbose_name': observable})
+                self.plots[user.username][network_ID].append({'plot': make_ajax_plot(observable, self.networks[user.username][network_ID].size_observable(observable), network_ID), 'name':"bokeh_" + str(len(self.plots)), 'verbose_name': observable})
                 return render(request, 'ARNN/bokeh.html', {'plots': self.plots[user.username][network_ID]})
             else:
                 messages.error(request, "Unable to add additional Bokeh instance, max limit reached!")
@@ -284,8 +300,9 @@ class NetworkRunControl(View):
         """
         if self.exist_entry(user.username, network_ID):
             del self.networks[user.username][network_ID]
-            return HttpResponse()       
-        
+            del self.plots[user.username][network_ID]
+            return HttpResponse()
+
         messages.error(request, "This network doesn't exist")
         return HttpResponseBadRequest("This network doesn't exist")
 
@@ -342,7 +359,7 @@ def edit(request, pk=None):  #FIXME work in progress
             return HttpResponseBadRequest('Error: Form is not valid')
     return HttpResponseBadRequest('Error: Not a POST request')
 
-def list(request):
+def list_net(request):
     """ This function return this list of networks owned by the current user as a JSON.
 
             Inputs :
@@ -352,11 +369,11 @@ def list(request):
     net_json = serializers.serialize('json', networks)
     return HttpResponse(net_json, content_type='json')
 
-        
+
 
 def delete(request, pk):
     """ This fonction delete a network from the data base.
-        
+
             Inputs:
             -request : HTTP request from the front-end
             -pk : the ID of the network to delete

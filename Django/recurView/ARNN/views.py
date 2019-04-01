@@ -40,11 +40,6 @@ def signup(request):
             os.mkdir(user_path)
             os.mkdir(os.path.join(user_path, settings.PATH_TO_NETWORKS))
             os.mkdir(os.path.join(user_path, settings.PATH_TO_CORPUS))
-            
-            for obj in Corpus.objects.all().filter(owner = User.objects.get(username = settings.SHARED_CORPUS_ACCOUNT)): 
-                obj.pk = None
-                obj.owner = user
-                obj.save()
 
             login(request, user)
             messages.success(request, 'Your account has been created.')

@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Network, Template, Corpus, Observable
+from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from django.conf import settings
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -67,7 +70,8 @@ class TaskForm(forms.Form):
     def __init__(self, *args, **kwargs):
         requser = kwargs.pop('user', None)
         super(TaskForm, self).__init__(*args, **kwargs)
-        self.fields['corpus'].queryset = Corpus.objects.filter(owner=requser)
+        corpus_user = get_object_or_404(User, username=settings.SHARED_CORPUS_ACCOUNT )
+        self.fields['corpus'].queryset = Corpus.objects.filter(Q(owner=requser) | Q(owner=corpus_user))
 
 
 class ObservableForm(forms.Form):
