@@ -1,7 +1,7 @@
 {% for plot in plots %}
-<div class="card text-center" id="{{ plot.name }}">
+<div style="margin-bottom:4%" class="card text-center" id="{{ plot.name }}">
     <div class="card-header">
-        <button type="button" class="close" aria-label="Close" onclick="delete_plot({{plot.name}})">
+        <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         <h5>{{ plot.verbose_name }}</h5>
@@ -12,5 +12,39 @@
         {% endfor %}
     </div>
 </div>
-<br />
+
 {% endfor %}
+
+<script>
+    function get_active_tab_index() {
+        return $('#tabs').tabs('option', 'active')
+    }
+
+    function get_active_net_pk() {
+        return $('#tabs > ul > li').eq(get_active_tab_index()).attr('data-pkey');
+    }
+
+    function delete_plot(plot) {
+        $.ajax({
+            type: "GET",
+            url: "/accounts/" + "control/",
+            data: {
+                method: "delete_plot",
+                network_ID: get_active_net_pk(),
+                plotID: plot
+            },
+            success: function () {
+                $("'#" + plot + "'").remove();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Can't delete this plot!");
+            }
+        })
+    }
+    $('#delete_net_button').on('click', function () {
+        const net = get_active_net_pk();
+        if (net) { //if the tab exists
+            delete_entity(net, "network")
+        }
+    });
+</script>

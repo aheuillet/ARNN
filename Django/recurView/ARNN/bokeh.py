@@ -26,8 +26,12 @@ def make_ajax_plot(observable, dim, network_ID):
         source.data["y"+str(i)]=[]
 
     plot = figure(plot_height=200, sizing_mode='scale_width')
+    span = int(256*256*256/(dim+1)) + 1
+    a = (int(span/(255*255)),int(span/(255))%255, span%255)
+    print(a)
     for i in range(dim):
-        plot.line('x', 'y'+str(i), source=source, line_width=2)
+        plot.line('x', 'y'+str(i), source=source, line_width=2, line_color="#%02x%02x%02x" % (int(i*span/(255*255))+1,int(i*span/(255))%(255)+1, i*span%255+1))
+    
     plot.xaxis.axis_label = "Iterations over time"
 
     script, div = components(plot, CDN)

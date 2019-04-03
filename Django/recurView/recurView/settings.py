@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Maximum number of networks available for each user
+# Maximum number of loaded neurones available for each user
 MAX_NEURONE = 5000
 
 # Maximum number of Bokeh instances available at once for a session
@@ -30,11 +30,20 @@ PATH_TO_NETWORKS = 'networks/'
 # path to the user's corpora
 PATH_TO_CORPUS = 'corpora/'
 
-# path to the user's network templates
-PATH_TO_TEMPLATES = 'templates/'
-
 # name of the user sharing all his corpora
 SHARED_CORPUS_ACCOUNT = "admin"
+
+# email adresse of the user sharing all his corpora
+SHARED_CORPUS_EMAIL = "admin@example.com"
+
+# Maximum number of neurones available for one network
+MAX_SIZE_RESERVOIR = 1000
+
+# Maximum dimension of a network's input
+MAX_DIM_INPUT = 100
+
+# Maximum dimension of a network's output
+MAX_DIM_OUTPUT = 100
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/

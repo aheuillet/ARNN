@@ -3,28 +3,6 @@ from django.contrib.auth.models import User
 from django.forms import ModelChoiceField
 from django.core.validators import MaxValueValidator, MinValueValidator
 import numpy as np
-"""  create user 
-user = User.objectsS.create_user('john', 'kjd@klhjd.fr', 'pass')
-user.last_name = 'KJH'
-user.save()
---------------  change password 
-u = User.objects.get(username= 'john')
-u.set_password('new password')
-u.save()
----------------- create superuser 
-python3 manage.py createsuperuser --username=joe --email=joe@example.com
---------------  authentificate a user
-frmo django.contrib.auth import authentificate 
-user = authentificate(username='john', password='secret')
-if user is not None : 
-    # success
-else: 
-    #fail 
----------------
-
-"""
-
-# Create your models here.
 
 class Observable(models.Model):
     name = models.CharField(max_length=30000)
@@ -57,8 +35,8 @@ class Template(CommonInfo):
         return self.name
 
 class Corpus(CommonInfo):
-    data_in = models.FileField(default="None", verbose_name="Input file (must be CSV)")
-    data_out = models.FileField(default="None", verbose_name="Output file (must be CSV)")
+    data_in = models.FileField(default="None", verbose_name="Input file (must be CSV or NPY)")
+    data_out = models.FileField(default="None", verbose_name="Output file (must be CSV or NPY)")
     size = models.IntegerField()
     dim_out = models.IntegerField()
     dim_in = models.IntegerField() 

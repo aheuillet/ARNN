@@ -33,8 +33,7 @@ Pb pour la reduction des fenetres-->
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateModal">New
                             template</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateListModal">Delete</a>
-                        <a class="dropdown-item" href="#">Download</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#templateListModal">List</a>
                     </div>
                 </div>
             </div>
@@ -50,8 +49,8 @@ Pb pour la reduction des fenetres-->
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkModal">New
                             network</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Download</a>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#networkListModal">Load</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal"
+                           data-target="#networkListModal">List/Load</a>
                         <a class="dropdown-item" href="#" id="save_button">Save Current</a>
                     </div>
                 </div>
@@ -59,18 +58,19 @@ Pb pour la reduction des fenetres-->
             &nbsp;
             <div class="nav navbar-nav">
                 <div class="dropdown" data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
-                     data-content="This menu allows you to create new corpora from CSV files">
+                     data-content="This menu allows you to create new corpora from CSV or NPY files">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="corpusDropdownMenuButton"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Corpora
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusModal">New
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusModal">Upload new
+                            corpus</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusGenerateModal">Generate
+                            new
                             corpus</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusListModal">Delete a
-                            corpus</a>
-                        <a class="dropdown-item" href="#">Download</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#corpusListModal">List</a>
                     </div>
                 </div>
             </div>
@@ -99,19 +99,19 @@ Pb pour la reduction des fenetres-->
 
     <div class="row">
 
-        <div class="col-lg-2 bg-secondary">
+        <div class="col-lg-2 col-sm-2 col-xs-12 bg-secondary">
             <div class="alert alert-dark text-center">
                 <h4 class="alert-heading">Information</h4>
             </div>
         </div>
 
-        <div class="col-lg-8 bg-light" style="padding-left:10px; padding-right:10px;">
+        <div class="col-lg-8 col-sm-8 col-xs-12 bg-light" style="padding-left:10px; padding-right:10px;">
             <div class="alert alert-info text-center">
                 <h4 class="alert-heading">Networks</h4>
             </div>
         </div>
 
-        <div class="col-lg-2 bg-secondary">
+        <div class="col-lg-2 col-sm-2 col-xs-12 bg-secondary">
             <div class="alert alert-dark text-center">
                 <h4 class="alert-heading">Controls</h4>
             </div>
@@ -119,10 +119,10 @@ Pb pour la reduction des fenetres-->
 
     </div>
     <div class="row" style="height: 100%;">
-        <div class="col-lg-2 bg-secondary" style=' padding-top: 10px;'>
+        <div class="col-lg-2 col-sm-2 col-xs-12 bg-secondary" style=' padding-top: 10px;'>
             <div id="infosNet"></div>
         </div>
-        <div class="col-lg-8 bg-light" style=' padding-top: 10px;'>
+        <div class="col-lg-8 col-sm-8 col-xs-12 bg-light" style=' padding-top: 10px;'>
             <div id="tabs">
                 <ul id="myNetworks">
 
@@ -138,15 +138,14 @@ Pb pour la reduction des fenetres-->
 
         </div>
 
-        <div class="col-lg-2 bg-secondary" style=' padding-top: 10px;'>
+        <div class="col-lg-2 col-sm-2 col-xs-12 bg-secondary" style=' padding-top: 10px;'>
             <div class="card" align='left'>
                 <div class="card-body">
                     <button id="button_play" type="button" class="btn" style="font-size:24px"
                             onclick="window.location.href='#'" data-toggle="popover" data-trigger="hover"
                             data-placement="right" title="Hint"
                             data-content="Click here to start or stop the current network. Note that you can only start a network if you have had at least one task. ">
-                        <i
-                                class="fas fa-play" aria-hidden="true"></i>
+                        <i class="fas fa-play" aria-hidden="true"></i>
                     </button>
 
                     <button id="button_recompute" type="button" class="btn" style="font-size:24px"
@@ -162,12 +161,18 @@ Pb pour la reduction des fenetres-->
                                 data-target="#taskModal">Add Task
                         </button>
                     </div>
-                    <br/>
                     <div data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
                          data-content="This menu allows you to add a new observable to the currently loaded network. This observable will appear as a graph in the middle section of the page and will be computed once the network will have finished his next run.">
                         <button id="add_observable" type="button" class="btn" style="font-size:17px" data-toggle="modal"
                                 data-target="#observableModal">
                             Add Observable
+                        </button>
+                    </div>
+                    <div data-toggle="popover" data-trigger="hover" data-placement="right" title="Hint"
+                         data-content="This menu allows you to consult the list of current tasks planned for the loaded network.">
+                        <button id="get_list_tasks" type="button" class="btn" style="font-size:17px" data-toggle="modal"
+                                data-target="#taskListModal">
+                            View Tasks
                         </button>
                     </div>
                 </div>
@@ -181,6 +186,18 @@ Pb pour la reduction des fenetres-->
 {% block javascript %}
 <script>
     $(document).ready(function () {
+
+
+        $(window).on('unload', function () {
+            window.localStorage.setItem('openedTab', $('#tabs').tabs('option', 'active'));
+        });
+
+        $('#tabs').tabs({
+            activate: function (event, ui) {
+                build_infos_net(get_active_net_pk());
+            }
+        });
+
         const local_route = "/accounts/";
         $('[data-toggle*="popover"]').popover();
 
@@ -195,6 +212,12 @@ Pb pour la reduction des fenetres-->
                     clear_tabs();
                     for (const i in data) {
                         build_tab(data[i]);
+                    }
+                    const openedTab = window.localStorage.getItem('openedTab')
+                    if (openedTab) {
+                        $('#tabs').tabs({
+                            active: openedTab
+                        });
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -239,7 +262,7 @@ Pb pour la reduction des fenetres-->
                         },
                         success: function () {
                             $('#infosNet').empty();
-
+                            $('#myNetworksContent').empty();
                             const tabli = $('#close_net' + netid).closest("li");
                             const selected_idx = get_active_tab_index();
                             if (tabli.index() === selected_idx)
@@ -288,6 +311,19 @@ Pb pour la reduction des fenetres-->
                     '                </div>' +
                     '            </form>' +
                     '   </div>';
+            } else if (type == "taskList") {
+                modal +=
+                    '<table class="table modal-body">' +
+                    '   <thead>' +
+                    '       <tr>' +
+                    '           <th scope="col">Type</th>' +
+                    '           <th scope="col">Corpus</th>' +
+                    '           <th scope="col">Start Step</th>' +
+                    '           <th scope="col">Stop Step</th>' +
+                    '       </tr>' +
+                    '   </thead>' +
+                    '   <tbody id="' + type + 'Body"> </tbody>' +
+                    '</table>'
             } else {
                 modal +=
                     '<table class="table modal-body">' +
@@ -299,6 +335,7 @@ Pb pour la reduction des fenetres-->
                     '   <tbody id="' + type + 'Body"> </tbody>' +
                     '</table>'
             }
+
 
             modal +=
                 '        </div>' +
@@ -320,7 +357,33 @@ Pb pour la reduction des fenetres-->
         build_modal("corpusList");
         build_modal("networkList");
         build_modal("templateList");
+        build_modal("taskList");
+        build_modal("corpusGenerate", '{% spaceless %}{{corpus_generate_form.as_table}}{% endspaceless %}', local_route + "corpus/generate");
 
+        $('#id_corpus').change( function (e) {
+            console.log("dfg")
+            if (this.value) {
+                $.ajax({
+                    type: "GET",
+                    url: local_route + "corpus/get_size/" + this.value + "/",
+                    success: function (size) {
+                        $('#id_start').val(0);
+                        $('#id_start').attr("max", size - 1);
+                        $('#id_stop').val(size - 1);
+                        $('#id_stop').attr("max", size - 1);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("Can't have the size of this corpus");
+                    }
+                });
+            }
+        });
+        $('#id_start').on('input', function () {
+            $('#id_stop').attr("min", $(this).val());
+        });
+        $('#id_stop').on('input', function () {
+            $('#id_start').attr("max", $(this).val());
+        });
         if ($('.modal ul.errorlist').length > 0) {
             $('.modal ul.errorlist').closest('.modal').modal('show')
         }
@@ -335,22 +398,39 @@ Pb pour la reduction des fenetres-->
         }
 
         function load_net(json_data, build = true) {
-            return $.ajax({
+            let auto_load = false;
+            $.ajax({
                 type: "GET",
-                url: local_route + "control/",
-                data: {
-                    method: "load_network",
-                    network_ID: json_data["pk"]
-                },
-                success: function () {
-                    if (build)
-                        build_tab(json_data);
+                url: local_route + "network/autosaved/" + json_data["pk"] + "/",
+                success: function (data) {
+                    if (data == 'True') {
+                        if (confirm("Unsaved data have been found for this network, would you like to load it?")) {
+                            auto_load = true;
+                        }
+                    }
+                    return $.ajax({
+                        type: "GET",
+                        url: local_route + "control/",
+                        data: {
+                            method: "load_network",
+                            network_ID: json_data["pk"],
+                            auto_load: auto_load
+                        },
+                        success: function () {
+                            if (build)
+                                build_tab(json_data);
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            handleHttpError(XMLHttpRequest.status);
+                        }
+                    })
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     handleHttpError(XMLHttpRequest.status);
                 }
             })
         }
+
 
         $("#network_form").submit(function (e) {
             e.preventDefault();
@@ -368,7 +448,35 @@ Pb pour la reduction des fenetres-->
             });
         });
 
-
+        $('#taskModal').on('show.bs.modal', function () {
+            $.ajax({
+                type: "GET",
+                url: local_route + "network/get_dims/" + get_active_net_pk() + "/",
+                success: function (data) {
+                    const dim_input = data[0];
+                    const dim_output = data[1];
+                    $("#id_corpus option").each(function () {
+                        const corpus = $(this);
+                        if (corpus.val()) {
+                            $.ajax({
+                                type: "GET",
+                                url: local_route + "corpus/get_dims/" + corpus.val() + "/",
+                                success: function (corpusdata) {
+                                    if (corpusdata[0] !== dim_input || corpusdata[1] !== dim_output)
+                                        corpus.remove();
+                                },
+                                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                    handleHttpError(XMLHttpRequest.status);
+                                }
+                            })
+                        }
+                    });
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    handleHttpError(XMLHttpRequest.status);
+                }
+            })
+        });
         $('#task_form').submit(function (e) {
 
             e.preventDefault();
@@ -395,7 +503,9 @@ Pb pour la reduction des fenetres-->
                         handleHttpError(XMLHttpRequest.status);
                     }
                 })
-            }
+            } else
+                alert("No network selected")
+
         });
 
         $('#observable_form').submit(function (e) {
@@ -421,7 +531,8 @@ Pb pour la reduction des fenetres-->
                         handleHttpError(XMLHttpRequest.status);
                     }
                 })
-            }
+            } else
+                alert("No network selected")
         });
 
 
@@ -456,7 +567,8 @@ Pb pour la reduction des fenetres-->
                         network_ID: net
                     },
 
-                    success: function () {
+                    success: function (data) {
+                        window.location = local_route
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         alert("Can't play/pause this network!")
@@ -494,23 +606,21 @@ Pb pour la reduction des fenetres-->
             })
         }
 
-        function delete_plot(plot){
-          $.ajax({
-              type: "GET",
-              url: local_route + "control/",
-              data: {
-                  method: "delete_plot",
-                  network_ID: get_active_net_pk(),
-                  plotID: plot
-              },
-              success: function () {
-                $("'#"+plot+"'").remove();
-              },
-              error: function (XMLHttpRequest, textStatus, errorThrown) {
-                  alert("Can't delete this plot!");
-              }
-          })
+        function download_entity(pk, kind) {
+            $.ajax({
+                type: "GET",
+                url: local_route + kind + "/download/" + pk + "/",
+                success: function () {
+                    $('#infosNet').empty();
+                    build_loaded_nets();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Can't download this " + kind + "!")
+                }
+            })
         }
+
+
         $('#delete_net_button').on('click', function () {
             const net = get_active_net_pk();
             if (net) { //if the tab exists
@@ -550,7 +660,8 @@ Pb pour la reduction des fenetres-->
                 success: function (data) {
                     $('#infosNet').empty();
                     $('#infosNet').append('<div class="card" id="cardInfos"></div>');
-                    $('#cardInfos').append('<div class="card list-group" id="cardBodyInfos"></div>');
+                    $('#cardInfos').append(
+                        '<div class="card list-group" id="cardBodyInfos"></div>');
 
                     for (const i in data)
                         $('#cardBodyInfos').append(
@@ -574,6 +685,28 @@ Pb pour la reduction des fenetres-->
 
                 success: function (data) {
                     $('#myNetworksContent').html(data)
+                    $('#myNetworksContent button').on('click', function (e) {
+                        const plot = $(this).closest('.card').attr('id');
+
+                        $.ajax({
+                            type: "GET",
+                            url: local_route + "control/",
+                            data: {
+                                method: "delete_plot",
+                                network_ID: get_active_net_pk(),
+                                plotID: plot
+                            },
+                            success: function () {
+                                $('#' + plot).remove();
+                            },
+                            error: function (XMLHttpRequest, textStatus,
+                                             errorThrown) {
+                                alert("Can't delete this plot!");
+                            }
+                        })
+                    });
+
+
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     alert("Can't load graphs for this network!")
@@ -582,12 +715,6 @@ Pb pour la reduction des fenetres-->
 
         }
 
-        $('#tabs').tabs({
-            activate: function (event, ui) {
-                build_infos_net(get_active_net_pk());
-
-            }
-        });
 
         function build_list(kind) {
             const list = document.getElementById(kind + "ListBody");
@@ -628,9 +755,66 @@ Pb pour la reduction des fenetres-->
                             delete_entity(json_data["pk"], kind, row.id);
                         };
                         deletebutton.className = "btn btn-danger btn-sm";
-                        deletebutton.innerText = "X";
+                        deletebutton.innerText = "Delete";
                         deletetd.appendChild(deletebutton);
                         row.appendChild(deletetd);
+
+                        let downloadtd = document.createElement("td");
+                        let downloadbutton = document.createElement("button");
+                        let downloadicon = document.createElement("i");
+                        downloadicon.className = "fas fa-download";
+                        downloadbutton.onclick = function () {
+                            location.href = local_route + kind + "/download/" + json_data[
+                                "pk"] + "/";
+                        };
+                        downloadbutton.className = "btn btn-success btn-sm";
+                        downloadtd.appendChild(downloadbutton);
+                        downloadbutton.appendChild(downloadicon);
+                        row.appendChild(downloadtd);
+
+                        list.appendChild(row);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    handleHttpError(XMLHttpRequest.status);
+                }
+            })
+        }
+
+        function buildTaskList() {
+            const kind = "task";
+            const list = document.getElementById(kind + "ListBody");
+            list.innerHTML = "";
+
+            $.ajax({
+                type: "GET",
+                url: local_route + "control/?method=get_network_tasks&network_ID=" +
+                    get_active_net_pk(),
+
+                success: function (data) {
+
+                    for (const i in data) {
+
+                        const json_data = data[i];
+                        console.log(json_data);
+                        let row = document.createElement("tr");
+                        row.id = "id_" + kind + i;
+                        let typetd = document.createElement("td");
+                        typetd.innerText = json_data["type"];
+                        row.appendChild(typetd);
+
+
+                        let corpustd = document.createElement("td");
+                        corpustd.innerText = json_data["corpus"];
+                        row.appendChild(corpustd);
+
+                        let starttd = document.createElement("td");
+                        starttd.innerText = json_data["start"];
+                        row.appendChild(starttd);
+
+                        let stoptd = document.createElement("td");
+                        stoptd.innerText = json_data["stop"];
+                        row.appendChild(stoptd);
 
                         list.appendChild(row);
                     }
@@ -651,6 +835,10 @@ Pb pour la reduction des fenetres-->
 
         $('#corpusListModal').on('show.bs.modal', function () {
             build_list("corpus");
+        });
+
+        $('#taskListModal').on('show.bs.modal', function () {
+            buildTaskList();
         });
 
     });

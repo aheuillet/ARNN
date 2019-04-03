@@ -1,0 +1,1543 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ARNN package &#8212; ARNN 2019 documentation</title>
+    <link rel="stylesheet" href="_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Useful links" href="links.html" />
+    <link rel="prev" title="General Architecture" href="architecture.html" /> 
+  </head><body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="index.html">
+              <span>ARNN 2019 documentation</span></a></h1>
+            <h2 class="heading"><span>ARNN package</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="architecture.html">General Architecture</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="links.html">Useful links</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About ARNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="developer.html">Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="architecture.html">General Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ARNN package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Useful links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">ARNN license</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="arnn-package">
+<h1>ARNN package<a class="headerlink" href="#arnn-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ARNN.bokeh">
+<span id="arnn-bokeh-module"></span><h2>ARNN.bokeh module<a class="headerlink" href="#module-ARNN.bokeh" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ARNN.bokeh.make_ajax_plot">
+<code class="descclassname">ARNN.bokeh.</code><code class="descname">make_ajax_plot</code><span class="sig-paren">(</span><em>observable</em>, <em>dim</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.bokeh.make_ajax_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to create a new Bokeh instance to send to the view.</p>
+<p>Inputs:
+-observable: a string containing the name of the observable to poll for.
+-network_ID: an int referring to the network whose observable need to be fetched.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.corpus_control">
+<span id="arnn-corpus-control-module"></span><h2>ARNN.corpus_control module<a class="headerlink" href="#module-ARNN.corpus_control" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ARNN.corpus_control.corpus_size">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">corpus_size</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.corpus_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.correct">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">correct</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function checks if the corpus contains only integers or floats and if its
+dimension is correct.</p>
+<blockquote>
+<div>Inputs:
+-file: The file to parse.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.create">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">create</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a new corpus and save it into the database after receiving a request (containing a form) from
+the client.</p>
+<blockquote>
+<div>Inputs:
+-request: The HTTP request from the client.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.create_csv">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">create_csv</code><span class="sig-paren">(</span><em>file_path</em>, <em>dim</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.create_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a csv file from a stored npy corpus file</p>
+<p>Inputs:
+-file_path:Path to the npy corpus file
+-dim: dimension of the corpus</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.delete">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.delete" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>This function deletes a corpus from the database after receiving a request</dt>
+<dd>from the database.</dd>
+<dt>network</dt>
+<dd>Inputs:
+-request: The HTTP request from the client.
+-pk: The primary key of the corpus to download.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.delete_corpus_data">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">delete_corpus_data</code><span class="sig-paren">(</span><em>username</em>, <em>dataname</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.delete_corpus_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function removes the files associated with a corpus.</p>
+<p>Inputs:
+-username: A string containing the username of the corpus’ owner.
+-dataname: A string containing the name of the corpus.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.dim">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">dim</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the dimension of the corpus whose file path is passed as parameter.</p>
+<p>Inputs:
+-file: A string containing the path to the corpus file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.download">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">download</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function send to the client the csv files of the corpus whose pk is passed as parameter.
+If only npy files are present, it also creates the corresponding csv.</p>
+<blockquote>
+<div>Inputs:
+-request: The HTTP request from the client.
+-pk: The primary key of the corpus to download.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.generate">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">generate</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.generate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a new corpus after receiving a request from the client.</p>
+<p>Inputs:
+-request: The HTTP request from the client.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.handle_uploaded_data">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">handle_uploaded_data</code><span class="sig-paren">(</span><em>file_in</em>, <em>file_out</em>, <em>username</em>, <em>dataname</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.handle_uploaded_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates npy files from the uploaded corpus csv files</p>
+<p>Inputs:
+-file_in: A string containing the path to the input file
+-file_out: A string containing the path to the output file
+-username: A string containing the username of the corpus’ owner
+-dataname: A string containing the path where to store the generated NPY files.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.liste">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">liste</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.liste" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a JSON-formatted list of the corpora stored in the database.</p>
+<p>Inputs:
+-request: The HTTP request from the client.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.corpus_control.size">
+<code class="descclassname">ARNN.corpus_control.</code><code class="descname">size</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.corpus_control.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the length of the corpus whose file path is passed as parameter.</p>
+<p>Inputs:
+-file: A string containing the path to the corpus file.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.forms">
+<span id="arnn-forms-module"></span><h2>ARNN.forms module<a class="headerlink" href="#module-ARNN.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ARNN.forms.CorpusForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">CorpusForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.CorpusForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<dl class="class">
+<dt id="ARNN.forms.CorpusForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ARNN.forms.CorpusForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ['name', 'data_in', 'data_out']</em><a class="headerlink" href="#ARNN.forms.CorpusForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#ARNN.forms.CorpusForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#ARNN.models.Corpus" title="ARNN.models.Corpus"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.Corpus</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'data_in': &lt;django.forms.fields.FileField object&gt;, 'data_out': &lt;django.forms.fields.FileField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#ARNN.forms.CorpusForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#ARNN.forms.CorpusForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.CorpusForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.CorpusGenerateForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">CorpusGenerateForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.CorpusGenerateForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusGenerateForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'dim': &lt;django.forms.fields.IntegerField object&gt;, 'max_val': &lt;django.forms.fields.IntegerField object&gt;, 'min_val': &lt;django.forms.fields.IntegerField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'seed': &lt;django.forms.fields.IntegerField object&gt;, 'size': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.CorpusGenerateForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusGenerateForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'dim': &lt;django.forms.fields.IntegerField object&gt;, 'max_val': &lt;django.forms.fields.IntegerField object&gt;, 'min_val': &lt;django.forms.fields.IntegerField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'seed': &lt;django.forms.fields.IntegerField object&gt;, 'size': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.CorpusGenerateForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.CorpusGenerateForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.CorpusGenerateForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.NetworkForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">NetworkForm</code><span class="sig-paren">(</span><em>user</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.NetworkForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<dl class="class">
+<dt id="ARNN.forms.NetworkForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ARNN.forms.NetworkForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.NetworkForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('name', 'template')</em><a class="headerlink" href="#ARNN.forms.NetworkForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.NetworkForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#ARNN.forms.NetworkForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#ARNN.models.Network" title="ARNN.models.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.Network</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.NetworkForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'name': &lt;django.forms.fields.CharField object&gt;, 'template': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#ARNN.forms.NetworkForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.NetworkForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#ARNN.forms.NetworkForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.NetworkForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.NetworkForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.ObservableForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">ObservableForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.ObservableForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.ObservableForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'observable': &lt;django.forms.models.ModelChoiceField object&gt;, 'periodicity': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.ObservableForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.ObservableForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'observable': &lt;django.forms.models.ModelChoiceField object&gt;, 'periodicity': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.ObservableForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.ObservableForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.ObservableForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.RegistrationForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">RegistrationForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.RegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.forms.UserCreationForm</span></code></p>
+<dl class="class">
+<dt id="ARNN.forms.RegistrationForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ARNN.forms.RegistrationForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.RegistrationForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('username', 'first_name', 'last_name', 'email')</em><a class="headerlink" href="#ARNN.forms.RegistrationForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.RegistrationForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#ARNN.forms.RegistrationForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.RegistrationForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'first_name': &lt;django.forms.fields.CharField object&gt;, 'last_name': &lt;django.forms.fields.CharField object&gt;, 'password1': &lt;django.forms.fields.CharField object&gt;, 'password2': &lt;django.forms.fields.CharField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#ARNN.forms.RegistrationForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.RegistrationForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'password1': &lt;django.forms.fields.CharField object&gt;, 'password2': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#ARNN.forms.RegistrationForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.RegistrationForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.RegistrationForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.forms.RegistrationForm.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>commit=True</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.RegistrationForm.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save this form’s self.instance object if commit=True. Otherwise, add
+a save_m2m() method to the form which can be called after the instance
+is saved manually at a later time. Return the model instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.TaskForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">TaskForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.TaskForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.forms.Form</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.TaskForm.TYPE_CHOICES">
+<code class="descname">TYPE_CHOICES</code><em class="property"> = (('Train', 'Train'), ('Test', 'Test'))</em><a class="headerlink" href="#ARNN.forms.TaskForm.TYPE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TaskForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'corpus': &lt;django.forms.models.ModelChoiceField object&gt;, 'kind_task': &lt;django.forms.fields.ChoiceField object&gt;, 'start': &lt;django.forms.fields.IntegerField object&gt;, 'stop': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.TaskForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TaskForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'corpus': &lt;django.forms.models.ModelChoiceField object&gt;, 'kind_task': &lt;django.forms.fields.ChoiceField object&gt;, 'start': &lt;django.forms.fields.IntegerField object&gt;, 'stop': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.TaskForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TaskForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.TaskForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TaskForm.user">
+<code class="descname">user</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.forms.TaskForm.user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.forms.TemplateForm">
+<em class="property">class </em><code class="descclassname">ARNN.forms.</code><code class="descname">TemplateForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.forms.TemplateForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<dl class="class">
+<dt id="ARNN.forms.TemplateForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.Meta.a">
+<code class="descname">a</code><em class="property"> = &lt;django.db.models.fields.FloatField: IS&gt;</em><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta.a" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.Meta.b">
+<code class="descname">b</code><em class="property"> = 'IS'</em><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta.b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ['name', 'N', 'spectral_radius', 'dim_input', 'dim_output', 'proba', 'seed', 'lr', 'IS']</em><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#ARNN.models.Template" title="ARNN.models.Template"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.Template</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.Meta.s">
+<code class="descname">s</code><em class="property"> = ['name', 'N', 'spectral_radius', 'dim_input', 'dim_output', 'proba', 'seed', 'lr', 'IS']</em><a class="headerlink" href="#ARNN.forms.TemplateForm.Meta.s" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'IS': &lt;django.forms.fields.FloatField object&gt;, 'N': &lt;django.forms.fields.IntegerField object&gt;, 'dim_input': &lt;django.forms.fields.IntegerField object&gt;, 'dim_output': &lt;django.forms.fields.IntegerField object&gt;, 'lr': &lt;django.forms.fields.FloatField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'proba': &lt;django.forms.fields.FloatField object&gt;, 'seed': &lt;django.forms.fields.IntegerField object&gt;, 'spectral_radius': &lt;django.forms.fields.FloatField object&gt;}</em><a class="headerlink" href="#ARNN.forms.TemplateForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'N': &lt;django.forms.fields.IntegerField object&gt;, 'dim_input': &lt;django.forms.fields.IntegerField object&gt;, 'dim_output': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#ARNN.forms.TemplateForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.forms.TemplateForm.media">
+<code class="descname">media</code><a class="headerlink" href="#ARNN.forms.TemplateForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.models">
+<span id="arnn-models-module"></span><h2>ARNN.models module<a class="headerlink" href="#module-ARNN.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ARNN.models.CommonInfo">
+<em class="property">class </em><code class="descclassname">ARNN.models.</code><code class="descname">CommonInfo</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.CommonInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="class">
+<dt id="ARNN.models.CommonInfo.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#ARNN.models.CommonInfo.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.Meta.abstract">
+<code class="descname">abstract</code><em class="property"> = False</em><a class="headerlink" href="#ARNN.models.CommonInfo.Meta.abstract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.Meta.ordering">
+<code class="descname">ordering</code><em class="property"> = ['creation_date']</em><a class="headerlink" href="#ARNN.models.CommonInfo.Meta.ordering" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.creation_date">
+<code class="descname">creation_date</code><a class="headerlink" href="#ARNN.models.CommonInfo.creation_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.CommonInfo.get_next_by_creation_date">
+<code class="descname">get_next_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.CommonInfo.get_next_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.CommonInfo.get_previous_by_creation_date">
+<code class="descname">get_previous_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.CommonInfo.get_previous_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.name">
+<code class="descname">name</code><a class="headerlink" href="#ARNN.models.CommonInfo.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.owner">
+<code class="descname">owner</code><a class="headerlink" href="#ARNN.models.CommonInfo.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.CommonInfo.owner_id">
+<code class="descname">owner_id</code><a class="headerlink" href="#ARNN.models.CommonInfo.owner_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.models.Corpus">
+<em class="property">class </em><code class="descclassname">ARNN.models.</code><code class="descname">Corpus</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>owner</em>, <em>creation_date</em>, <em>data_in</em>, <em>data_out</em>, <em>size</em>, <em>dim_out</em>, <em>dim_in</em>, <em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Corpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ARNN.models.CommonInfo" title="ARNN.models.CommonInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.CommonInfo</span></code></a></p>
+<dl class="exception">
+<dt id="ARNN.models.Corpus.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#ARNN.models.Corpus.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="ARNN.models.Corpus.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#ARNN.models.Corpus.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.data_in">
+<code class="descname">data_in</code><a class="headerlink" href="#ARNN.models.Corpus.data_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="k">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.data_out">
+<code class="descname">data_out</code><a class="headerlink" href="#ARNN.models.Corpus.data_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="k">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.dim_in">
+<code class="descname">dim_in</code><a class="headerlink" href="#ARNN.models.Corpus.dim_in" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.dim_out">
+<code class="descname">dim_out</code><a class="headerlink" href="#ARNN.models.Corpus.dim_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Corpus.get_next_by_creation_date">
+<code class="descname">get_next_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Corpus.get_next_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Corpus.get_previous_by_creation_date">
+<code class="descname">get_previous_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Corpus.get_previous_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.id">
+<code class="descname">id</code><a class="headerlink" href="#ARNN.models.Corpus.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#ARNN.models.Corpus.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.owner">
+<code class="descname">owner</code><a class="headerlink" href="#ARNN.models.Corpus.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.path">
+<code class="descname">path</code><a class="headerlink" href="#ARNN.models.Corpus.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Corpus.size">
+<code class="descname">size</code><a class="headerlink" href="#ARNN.models.Corpus.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.models.Network">
+<em class="property">class </em><code class="descclassname">ARNN.models.</code><code class="descname">Network</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>owner</em>, <em>creation_date</em>, <em>template</em>, <em>last_accessed</em>, <em>auto_saved</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ARNN.models.CommonInfo" title="ARNN.models.CommonInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.CommonInfo</span></code></a></p>
+<dl class="exception">
+<dt id="ARNN.models.Network.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#ARNN.models.Network.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="ARNN.models.Network.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#ARNN.models.Network.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.auto_saved">
+<code class="descname">auto_saved</code><a class="headerlink" href="#ARNN.models.Network.auto_saved" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Network.get_next_by_creation_date">
+<code class="descname">get_next_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Network.get_next_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Network.get_next_by_last_accessed">
+<code class="descname">get_next_by_last_accessed</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: last_accessed&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Network.get_next_by_last_accessed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Network.get_previous_by_creation_date">
+<code class="descname">get_previous_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Network.get_previous_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Network.get_previous_by_last_accessed">
+<code class="descname">get_previous_by_last_accessed</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: last_accessed&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Network.get_previous_by_last_accessed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.id">
+<code class="descname">id</code><a class="headerlink" href="#ARNN.models.Network.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.last_accessed">
+<code class="descname">last_accessed</code><a class="headerlink" href="#ARNN.models.Network.last_accessed" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#ARNN.models.Network.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.owner">
+<code class="descname">owner</code><a class="headerlink" href="#ARNN.models.Network.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.template">
+<code class="descname">template</code><a class="headerlink" href="#ARNN.models.Network.template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Network.template_id">
+<code class="descname">template_id</code><a class="headerlink" href="#ARNN.models.Network.template_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.models.Observable">
+<em class="property">class </em><code class="descclassname">ARNN.models.</code><code class="descname">Observable</code><span class="sig-paren">(</span><em>id</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="ARNN.models.Observable.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#ARNN.models.Observable.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="ARNN.models.Observable.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#ARNN.models.Observable.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Observable.id">
+<code class="descname">id</code><a class="headerlink" href="#ARNN.models.Observable.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Observable.name">
+<code class="descname">name</code><a class="headerlink" href="#ARNN.models.Observable.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Observable.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#ARNN.models.Observable.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="ARNN.models.Template">
+<em class="property">class </em><code class="descclassname">ARNN.models.</code><code class="descname">Template</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>owner</em>, <em>creation_date</em>, <em>last_modified</em>, <em>N</em>, <em>spectral_radius</em>, <em>dim_input</em>, <em>dim_output</em>, <em>proba</em>, <em>input_bias</em>, <em>seed</em>, <em>lr</em>, <em>IS</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ARNN.models.CommonInfo" title="ARNN.models.CommonInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">ARNN.models.CommonInfo</span></code></a></p>
+<dl class="exception">
+<dt id="ARNN.models.Template.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#ARNN.models.Template.DoesNotExist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.IS">
+<code class="descname">IS</code><a class="headerlink" href="#ARNN.models.Template.IS" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="ARNN.models.Template.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#ARNN.models.Template.MultipleObjectsReturned" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.N">
+<code class="descname">N</code><a class="headerlink" href="#ARNN.models.Template.N" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.dim_input">
+<code class="descname">dim_input</code><a class="headerlink" href="#ARNN.models.Template.dim_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.dim_output">
+<code class="descname">dim_output</code><a class="headerlink" href="#ARNN.models.Template.dim_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Template.get_next_by_creation_date">
+<code class="descname">get_next_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Template.get_next_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Template.get_next_by_last_modified">
+<code class="descname">get_next_by_last_modified</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: last_modified&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Template.get_next_by_last_modified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Template.get_previous_by_creation_date">
+<code class="descname">get_previous_by_creation_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: creation_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Template.get_previous_by_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.models.Template.get_previous_by_last_modified">
+<code class="descname">get_previous_by_last_modified</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: last_modified&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.models.Template.get_previous_by_last_modified" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.id">
+<code class="descname">id</code><a class="headerlink" href="#ARNN.models.Template.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.input_bias">
+<code class="descname">input_bias</code><a class="headerlink" href="#ARNN.models.Template.input_bias" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.last_modified">
+<code class="descname">last_modified</code><a class="headerlink" href="#ARNN.models.Template.last_modified" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.lr">
+<code class="descname">lr</code><a class="headerlink" href="#ARNN.models.Template.lr" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.network_set">
+<code class="descname">network_set</code><a class="headerlink" href="#ARNN.models.Template.network_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#ARNN.models.Template.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.owner">
+<code class="descname">owner</code><a class="headerlink" href="#ARNN.models.Template.owner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.proba">
+<code class="descname">proba</code><a class="headerlink" href="#ARNN.models.Template.proba" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.seed">
+<code class="descname">seed</code><a class="headerlink" href="#ARNN.models.Template.seed" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.models.Template.spectral_radius">
+<code class="descname">spectral_radius</code><a class="headerlink" href="#ARNN.models.Template.spectral_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.network">
+<span id="arnn-network-module"></span><h2>ARNN.network module<a class="headerlink" href="#module-ARNN.network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ARNN.network.NetworkRunner">
+<em class="property">class </em><code class="descclassname">ARNN.network.</code><code class="descname">NetworkRunner</code><span class="sig-paren">(</span><em>N</em>, <em>spectral_radius</em>, <em>dim_input</em>, <em>dim_output</em>, <em>proba</em>, <em>input_bias=True</em>, <em>seed=None</em>, <em>lr=0.3</em>, <em>IS=None</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>This classe intances correspond to a running network. They use the ESN classe to run the network during a task.
+The saving of the matrix of the ESN allow persistency across re-loading of the network.
+The caracteristics of the network are stored inside of the django database.</p>
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.add_observable">
+<code class="descname">add_observable</code><span class="sig-paren">(</span><em>observable</em>, <em>periodicity</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.add_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new observable to compute to the list. If the observable is already in the liste,
+this function only change the periodicity of the computation of the observable.</p>
+<blockquote>
+<div>Inputs:
+-observable: A string containing the name of the observable to add.
+-periodicity: An int that is the gape between 2 computations of the observable</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.add_task">
+<code class="descname">add_task</code><span class="sig-paren">(</span><em>path</em>, <em>start</em>, <em>stop</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.add_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new task to the task_list.</p>
+<p>Inputs:
+-path: A string containing the path to the corpus file
+-start: An int that is the begining of the training sequence inside of the corpus
+-stop: An int that is the end of the training sequence inside of the corpus
+-task: A string that contains the type of task to perform</p>
+<p>Ouputs:
+returns False if it couldn’t add the task, True otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.auto_save">
+<code class="descname">auto_save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.auto_save" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function saves all the matrix of a network in tempoary files. 
+It also update the network in the data base to notify that there are unsaved data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.calculated_obs">
+<code class="descname">calculated_obs</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.calculated_obs" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionnary of all the observables that are already computed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.compute_all_observables">
+<code class="descname">compute_all_observables</code><span class="sig-paren">(</span><em>begin</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.compute_all_observables" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.compute_observable">
+<code class="descname">compute_observable</code><span class="sig-paren">(</span><em>observable</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.compute_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute an observable at a specific point (self.x), using the functions defined in the observable.py file, in /reservoirpy/ folder.</p>
+<p>Input:
+-observable: A string containing the name of the observable to compute.
+Output:
+-A vector containing the asked observable.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ARNN.network.NetworkRunner.create">
+<em class="property">static </em><code class="descname">create</code><span class="sig-paren">(</span><em>username</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new network based on the template corresponding to the template_ID and saves it on disk.</p>
+<p>Inputs:
+-username: A string that contains the name of the owner of the network, this allow to
+create the path to the saving file.
+-network_ID: An int that is the primary key to the network.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.delete_observable">
+<code class="descname">delete_observable</code><span class="sig-paren">(</span><em>observable</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.delete_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the values from calculated_obs that are related to the observable ‘observable’.
+Input:
+-observable: A string containing the name of the observable to remove</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.expected_output">
+<code class="descname">expected_output</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.expected_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the corrects ouputs given to the reservoir across testing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.get_observable">
+<code class="descname">get_observable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.get_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dictionary that contains all the observables computed at this point.</p>
+<p>Output:
+-The attribute “calculated_obs”</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.input">
+<code class="descname">input</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the inputs given to the reservoir across testing</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ARNN.network.NetworkRunner.load_corpus">
+<em class="property">static </em><code class="descname">load_corpus</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.load_corpus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a corpus stored on disk and returns it.</p>
+<p>Inputs:
+-path: A string that contains the path to a corpus.</p>
+<p>Outputs:
+-inp: An np array that contains all of the inputs of the corpus
+-out: An np array containing the expected outputs for every input</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.load_matrix">
+<code class="descname">load_matrix</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.load_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the atributes of the ESN with the values previously stored on disk. The location of the numpy file
+is computed from path in the setting folder and colunms from the data base.</p>
+<blockquote>
+<div>Inputs:
+-path: An string that is the path to the files to load.</div></blockquote>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ARNN.network.NetworkRunner.load_network">
+<em class="property">static </em><code class="descname">load_network</code><span class="sig-paren">(</span><em>username</em>, <em>pk</em>, <em>load_auto_save=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.load_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a network that have already been created and stored in the database.</p>
+<p>Inputs:
+-pk: An int is the primary key of the network entry in the database.
+-username: A string containing the name of the owner of the netxork.
+-load_auto_save: This boolean tells if the auto-saved files should be loaded instead of the regular files.</p>
+<p>Output:
+The networkRunner corresponding to the database entry.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="ARNN.network.NetworkRunner.load_template">
+<em class="property">static </em><code class="descname">load_template</code><span class="sig-paren">(</span><em>template_id</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.load_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a template from the database and create a corresponding networkrunner from it. The network
+is created by parsing all the parameters contained in the template that concerns the network.</p>
+<blockquote>
+<div><p>Inputs:
+-template_id: An int that is the primary key of the template entry in the database.</p>
+<p>Output:
+The networkRunner corresponding to the template.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.obs_list">
+<code class="descname">obs_list</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.obs_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of observables to compute with their periodicity</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.pk">
+<code class="descname">pk</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.pk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primary key of the network in the database</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.play_pause">
+<code class="descname">play_pause</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.play_pause" title="Permalink to this definition">¶</a></dt>
+<dd><p>Launch the computation if the network is not running or stop it otherwise</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.predicted_output">
+<code class="descname">predicted_output</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.predicted_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the ouputs the reservoir computed across testing</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.remove_observable">
+<code class="descname">remove_observable</code><span class="sig-paren">(</span><em>observable</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.remove_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the entry of the observable in the dictionnary ‘obs_list’.
+Input:
+-observable: A string containing the name of the observable to remove</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.resume_training">
+<code class="descname">resume_training</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.resume_training" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the ESN over all the tasks set in task_list, if the task is a testing task,
+the input, predicted output, expected output, and the reservoir state’s lists are increased
+by the results of the runing. Then the function goes through all the observables to compute
+and compute them, then add them in the calculated_obs list. This function is threaded,
+so if the controller ask to stop the running, the computation stops.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow to play/pause the network with threading</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>username</em>, <em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a network onto the disk and remove all auto-saved references.</p>
+<p>Input:
+-username: A string containing the name of the owner of the network.
+-name: The name of the network to save.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.save_data">
+<code class="descname">save_data</code><span class="sig-paren">(</span><em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.save_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a network onto the disk at the location given.</p>
+<p>Input:
+-file: A string containing the path to the network.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.network.NetworkRunner.size_observable">
+<code class="descname">size_observable</code><span class="sig-paren">(</span><em>observable</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.network.NetworkRunner.size_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the size of a observable defined in the observable.py file, in /reservoirpy/ folder.</p>
+<p>Input:
+-observable: A string containing the name of the observable to compute.
+Output:
+-The dimension of the asked observable.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.states">
+<code class="descname">states</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.states" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains all the states of the reservoir across testing</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.task_list">
+<code class="descname">task_list</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.task_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of trainings and testing to perform</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.threadLock">
+<code class="descname">threadLock</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.threadLock" title="Permalink to this definition">¶</a></dt>
+<dd><p>allows for multi threading</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.network.NetworkRunner.threaded">
+<code class="descname">threaded</code><em class="property"> = None</em><a class="headerlink" href="#ARNN.network.NetworkRunner.threaded" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows to know if the network shall start a new thread</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.networkcontrol">
+<span id="arnn-networkcontrol-module"></span><h2>ARNN.networkcontrol module<a class="headerlink" href="#module-ARNN.networkcontrol" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="ARNN.networkcontrol.NetworkRunControl">
+<em class="property">class </em><code class="descclassname">ARNN.networkcontrol.</code><code class="descname">NetworkRunControl</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.views.generic.base.View</span></code></p>
+<p>This class stores all the networks that are running for a specific django session and control them.
+It is a View based on classe from django that controls the networks accessibles from the client.
+It uses an other class , <strong>networkrunner</strong> wich is located in network.py.</p>
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.add_network_tab">
+<code class="descname">add_network_tab</code><span class="sig-paren">(</span><em>username</em>, <em>network_ID</em>, <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.add_network_tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new network entry inside of networks if the network can be loaded from the data base.
+If the same user is already using to much resources, the function is not successfull.</p>
+<p>Inputs:
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the data base.
+-size : The size of the network you are trying to add.</p>
+<p>Outputs:
+If the network is added succesfully, the function returns 0, if too many neuronnes where already loaded, 1 and 2 if the network was already loaded.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.add_observable">
+<code class="descname">add_observable</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em>, <em>observable</em>, <em>periodicity</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.add_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new observable for the network to compute and link it to a free Bokeh instance.
+Fails if the network isn’t loaded.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID : A string containing the id of the network, with user, allows to identify the network in the dictionnary networks.
+-observable : The name of the observable to compute
+-periodicity : This integer tells how many iterations they are between 2 computations of the observable</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.add_task">
+<code class="descname">add_task</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em>, <em>corpus_ID</em>, <em>start</em>, <em>stop</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.add_task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new (testing or training task) to perform to the network.
+Fails if the network isn’t loaded.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID : A string containing the id of the network, with user, allows to identify the network in the dictionnary networks.
+-corpus_ID : The ID of the corpus to load that is already uploaded on the server.
+-start : An intenger that represent the line of the corpus where to begin the task.
+-stop : An intenger that represent the line of the corpus where to stop the task.
+-task : The type of task that the network shall perform</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.add_user_tab">
+<code class="descname">add_user_tab</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.add_user_tab" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new user entry inside of networks if not already in</p>
+<p>Inputs:
+-user : A string containing the name of the owner of the network.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.count_neuron">
+<code class="descname">count_neuron</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.count_neuron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Count the total number of neurones in all the networks currently loaded by an user.</p>
+<p>Inputs:
+-user : A string containing the name of the owner of the networks.</p>
+<p>Outputs:
+The function return the sum of all the size of the networks that are loaded.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.delete_plot">
+<code class="descname">delete_plot</code><span class="sig-paren">(</span><em>request</em>, <em>network_ID</em>, <em>plotID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.delete_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function remove the bokeh component from the class variable ‘plots’.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-network_ID :  A string containing the id of the concerned network.
+-plotID :  A string containing the id of the plot, with network_ID, it allows to identify the plot to delete.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.exist_entry">
+<code class="descname">exist_entry</code><span class="sig-paren">(</span><em>username</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.exist_entry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if a network is loaded.</p>
+<p>Inputs:
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the dictionnary networks.</p>
+<p>Outputs:
+-True if the network is loaded, false otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>The get fonction is a Django-needed fonction that communicate with the JS via Ajax call.
+It allows the JS of the client to order something to the controller by sending a request with the action and the parameters to apply.</p>
+<p>Inputs:
+-request : an http request containing a task to perform and some additionnal parameters.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get_loaded_nets">
+<code class="descname">get_loaded_nets</code><span class="sig-paren">(</span><em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get_loaded_nets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists all the networks currently loaded by a user.</p>
+<p>Inputs:
+-user : A reference to a user in the database.</p>
+<p>Outputs:
+-A json of a list of all the networks owned by user.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get_network_info">
+<code class="descname">get_network_info</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get_network_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function allows to build the list of information about a network.
+It allows the JS of the client to build a modal listing all the information oa a network.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the database.</p>
+<p>Ouputs: 
+-A json of a dictionnary, describing the network.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get_network_tasks">
+<code class="descname">get_network_tasks</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get_network_tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function allows to build the list of task of a network.
+It allows the JS of the client to build a modal listing all the tasks.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the database.</p>
+<p>Ouputs: 
+-A json of the list of dictionnaries, each describing a task.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get_observable">
+<code class="descname">get_observable</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>observable</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get_observable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch the observable calculated by the network and associated with the Bokeh instance whose ID is passed as parameter. If calculated and send them to the front end to be displayed.
+If their is no such network running or observable, return an error.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-observable: A string containing the name of the observable whose comptuted values have to be returned to the client.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the ‘networks’.</p>
+<p>Outputs:
+-If the observables can be found, the function returns a json containing the observables.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.get_plots">
+<code class="descname">get_plots</code><span class="sig-paren">(</span><em>request</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.get_plots" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function allows to display the bokeh elements of a network. 
+It is used to display all the observables of a network.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-network_ID :  A string containing the id of the network, it allows to identify the network in the ‘plots’ class variable.</p>
+<p>Output:
+-A render of the bokeh applied to the observables ploted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.load_network">
+<code class="descname">load_network</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em>, <em>auto_load=False</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.load_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a new network inside of networks if the network can be loaded from the data base.
+If the same user is already using to much resources, the function is not successfull.
+If it is the first time the user load a network, the user is added as an entry inside of networks.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the data base.
+-auto_load : A boolean value, if True, the auto saved files must be loaded, if False, the network gets loaded normally.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.networkcontrol.NetworkRunControl.networks">
+<code class="descname">networks</code><em class="property"> = {}</em><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.networks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class variable ‘networks’ is a dictionnary that contains all the networkrunners currently loaded.
+The user and the name of the network are the keys to a networkerunner.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.networkcontrol.NetworkRunControl.plots">
+<code class="descname">plots</code><em class="property"> = {}</em><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.plots" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ‘plots’ class variable contains the JS script and HTML code to send to the view in order to display the Bokeh graphs</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.re_roll_observables">
+<code class="descname">re_roll_observables</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.re_roll_observables" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function recompute all the observables of a network. 
+It is used to refresh the display of an observable added after the network have been run.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in ‘networks’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.remove_network">
+<code class="descname">remove_network</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.remove_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the corresponding network from networks.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the dictionnary networks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.save_network">
+<code class="descname">save_network</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.save_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the network inside of the database and on disk, by calling save the function of networkrunner.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, it allows to identify the network in ‘networks’.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="ARNN.networkcontrol.NetworkRunControl.tasks">
+<code class="descname">tasks</code><em class="property"> = {}</em><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.tasks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class variable ‘tasks’ is a dictionnary that contains all the taks of a network.
+The user and the name of the network are the keys to a list of task.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ARNN.networkcontrol.NetworkRunControl.toggle_run">
+<code class="descname">toggle_run</code><span class="sig-paren">(</span><em>request</em>, <em>user</em>, <em>network_ID</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.NetworkRunControl.toggle_run" title="Permalink to this definition">¶</a></dt>
+<dd><p>If the corresponding network is not already performing a task, this function launch the iterations of the network from the current step.
+If the network is running, this function stops the task at the current step.</p>
+<p>Inputs:
+-request: HTTP request from the front-end.
+-user : A string containing the name of the owner of the network.
+-network_ID :  A string containing the id of the network, with user, allows to identify the network in the dictionnary networks.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.networkcontrol.create">
+<code class="descclassname">ARNN.networkcontrol.</code><code class="descname">create</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function create a new network, by generating all the matrix that are inside, and add the corresponding entry inside of the database.</p>
+<p>Inputs:
+-request : HTTP request from the front-end.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.networkcontrol.delete">
+<code class="descclassname">ARNN.networkcontrol.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>This fonction delete a network from the data base, and from the disk.</p>
+<p>Inputs:
+-request : HTTP request from the front-end
+-pk : the ID of the network to delete</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.networkcontrol.download">
+<code class="descclassname">ARNN.networkcontrol.</code><code class="descname">download</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a ZIP archive containing the NPY files (weight matrix and state matrix)
+of the network whose primary key is passed as parameter.</p>
+<p>Inputs:
+-request: HTTP request from the front-end
+-pk: The ID of the network whose NPY files need to be downloaded.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.networkcontrol.get_network_saved">
+<code class="descclassname">ARNN.networkcontrol.</code><code class="descname">get_network_saved</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.get_network_saved" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a boolean meaning if the network given has some unsaved data.</p>
+<p>Inputs :
+-request: HTTP request from the front-end.
+Outputs :
+-A boolean value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.networkcontrol.list_net">
+<code class="descclassname">ARNN.networkcontrol.</code><code class="descname">list_net</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.networkcontrol.list_net" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function return this list of networks owned by the current user as a JSON.</p>
+<p>Inputs :
+-request: HTTP request from the front-end.
+Outputs :
+-A json of the list of networks own by a person</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ARNN.templates_control">
+<span id="arnn-templates-control-module"></span><h2>ARNN.templates_control module<a class="headerlink" href="#module-ARNN.templates_control" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ARNN.templates_control.create">
+<code class="descclassname">ARNN.templates_control.</code><code class="descname">create</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.templates_control.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a new template and save it into the database after receiving a request (containing a form) from
+the client.</p>
+<blockquote>
+<div>Inputs:
+-request: The HTTP request from the client.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.templates_control.delete">
+<code class="descclassname">ARNN.templates_control.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.templates_control.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function deletes a template from the database after receiving a request
+from the database.</p>
+<blockquote>
+<div>Inputs:
+-request: The HTTP request from the client.
+-pk: The primary key of the corpus to download.</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.templates_control.download">
+<code class="descclassname">ARNN.templates_control.</code><code class="descname">download</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.templates_control.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function send to the client the csv files of the template whose pk is passed as parameter.</p>
+<p>Inputs:
+-request: The HTTP request from the client.
+-pk: The primary key of the corpus to download.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ARNN.templates_control.list">
+<code class="descclassname">ARNN.templates_control.</code><code class="descname">list</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.templates_control.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a JSON-formatted list of the templates stored in the database.</p>
+<p>Inputs:
+-request: The HTTP request from the client.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="arnn-tests-module">
+<h2>ARNN.tests module<a class="headerlink" href="#arnn-tests-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-ARNN.views">
+<span id="arnn-views-module"></span><h2>ARNN.views module<a class="headerlink" href="#module-ARNN.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ARNN.views.get_basic_forms">
+<code class="descclassname">ARNN.views.</code><code class="descname">get_basic_forms</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.views.get_basic_forms" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ARNN.views.home">
+<code class="descclassname">ARNN.views.</code><code class="descname">home</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.views.home" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ARNN.views.index">
+<code class="descclassname">ARNN.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.views.index" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="ARNN.views.signup">
+<code class="descclassname">ARNN.views.</code><code class="descname">signup</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#ARNN.views.signup" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-ARNN">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-ARNN" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="architecture.html">General Architecture</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="links.html">Useful links</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Garcia Heuillet Tomas Gaurivaud Perche Buré Harchaoui.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

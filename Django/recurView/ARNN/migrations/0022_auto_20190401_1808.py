@@ -18,7 +18,7 @@ def populate_observables(apps, schema_editor):
     Observable.objects.filter(name="Nmrse maxmin"). delete()
     Observable.objects.filter(name="Nmrse mean"). delete()
     Observable = apps.get_model('ARNN', 'Observable')
-    new = User.objects.create_user(settings.SHARED_CORPUS_ACCOUNT, settings.SHARED_CORPUS_ACCOUNT +'@example.com', settings.SHARED_CORPUS_ACCOUNT, last_login="2000-01-01 00:00")
+    new = User.objects.create_user(settings.SHARED_CORPUS_ACCOUNT, settings.SHARED_CORPUS_EMAIL, settings.SHARED_CORPUS_ACCOUNT, last_login="2000-01-01 00:00")
     new.save()
     user_path = os.path.join(settings.PATH_TO_USERS_FOLDER, new.username)
     os.mkdir(user_path)

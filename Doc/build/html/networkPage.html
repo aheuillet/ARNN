@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Network Page &#8212; ARNN 2019 documentation</title>
+    <link rel="stylesheet" href="_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Administration" href="admin.html" />
+    <link rel="prev" title="Register" href="register.html" /> 
+  </head><body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="index.html">
+              <span>ARNN 2019 documentation</span></a></h1>
+            <h2 class="heading"><span>Network Page</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="register.html">Register</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="admin.html">Administration</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About ARNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="user.html">User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="register.html">Register</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Network Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="admin.html">Administration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="developer.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Useful links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">ARNN license</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="network-page">
+<span id="index"></span><h1>Network Page<a class="headerlink" href="#network-page" title="Permalink to this headline">¶</a></h1>
+<p>Once the user is authenticated, the network page is automatically loaded.</p>
+<img alt="_images/index.png" src="_images/index.png" />
+<p>Some features are noticeable. First of all, if the button at the top right corner is pressed, some options are displayed.</p>
+<p>The homepage can be accessed by clicking on the brain picture at the top left.</p>
+<p>If the web browser window is closed, then the current cookies are not cleared so that the user is still logged in. As a consequence the network page can be accessed again by clicking on <em>Networks</em> in the homepage, see the <a class="reference internal" href="user.html#user"><span class="std std-ref">User Guide</span></a>.</p>
+<p>The administration system is reachable by clicking on <em>Administration</em>, however you have to be logged in as a superuser to access the page, see <a class="reference internal" href="admin.html#admin"><span class="std std-ref">Administration</span></a> chapter for more details. If a user clicks on despite non-superuser privileges, then the administration login page with an error message is displayed.</p>
+<p>The user can close and reopen the GUI windows if they are judged annoying.</p>
+<div class="section" id="networks">
+<h2>Networks<a class="headerlink" href="#networks" title="Permalink to this headline">¶</a></h2>
+<p>This part develop the way to concretely use the application.</p>
+<p>A user with session cookies has to create a template at first by clicking on <em>Templates</em> then <em>New Template</em>. A window pops up.</p>
+<img alt="_images/template.png" src="_images/template.png" />
+<p>Input <em>N</em> is the number of neurons within the tank, the <em>spectral radius</em> is about the matrix of the connection weigths and the <em>probability of a connection</em> concerns the tank neurons. The weight matrix is generated from the seed so that the user can chose to obtain the same one multiple times. It is set by default to <em>-1</em> by default which means the Python clock is used to produce the matrix, therefore it is supposed to be random.</p>
+<p>Some self-explanatory options are available in the template scroll bar, the <em>manage</em> tab allows a logged-in user to delete the templates.</p>
+<p>Once the session includes at least one template, the user can create a network by clicking on <em>Networks</em> then <em>New Network</em>.</p>
+<img alt="_images/network.png" src="_images/network.png" />
+<p>The selected template will be the network’s basis. The networks can be loaded by clicking on <em>Networks</em> then manage. The networks of the session are displayed and the <em>load</em> option can be seen. When it is pressed, the selected network appears at the core with its characteristic in the <em>Information block</em> at the left.</p>
+<img alt="_images/loaded.png" src="_images/loaded.png" />
+<p>Afterward a corpus can be generated, by clicking on <em>Corpus</em> then <em>New Corpus</em>, from two different loaded files, the two matrix relevant to the input and the ouput. Yet, note that the corpus dimensions have to fit the selected dimensions of the network template. Some self-explanatory options are again available on the network and corpus scroll bars.</p>
+<img alt="_images/corpus.png" src="_images/corpus.png" />
+<p>When all of this is complete, the current network can be run under several otpions, click on <em>Add Task</em> from <em>Settings</em> on the right side.</p>
+<img alt="_images/task.png" src="_images/task.png" />
+<p>Either test or training mode can be launched with the corpus whose data is loaded. The steps will be described in the Network Control section.</p>
+</div>
+<div class="section" id="network-control">
+<h2>Network Control<a class="headerlink" href="#network-control" title="Permalink to this headline">¶</a></h2>
+<p>Once a task is assigned to the network, the network control functionalities (highlighted in red color in the image below) are available.</p>
+<img alt="_images/gui.png" src="_images/gui.png" />
+<p>The graphic windows at the core is generate by <em>Bokeh</em>, which includes somes options their website features in the <a class="reference internal" href="links.html#links"><span class="std std-ref">Useful links</span></a>, which can also be opened up by clicking on the <em>Bokeh</em> logo on the toolbar. On the settings area, the left and right arows are linked to the steps defined by the tasks and their meanings can easily be guessed.</p>
+<p>The plotted graphs correspond to the data of the current network whose the selection can be carried out by clicking on <em>Add Observable</em>.</p>
+<img alt="_images/observable.png" src="_images/observable.png" />
+<p>The data to be displayed can be chosen and the periodicity of the plot has to be specified. As several graphs may be needed to be displayed, some graphic windows are available to the user.</p>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="register.html">Register</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="admin.html">Administration</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Garcia Heuillet Tomas Gaurivaud Perche Buré Harchaoui.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

@@ -59,10 +59,10 @@ def generate_shape_tracking_array(array, start, stop):#time complexity is in O((
 
 
 def generate_shape(file_in, file_out, size, dim, min, max, seed):
-    """This fonction create 2 files in csv format. The first contains a serie of vector that are randomly generated. The second 
+    """This fonction create 2 files in csv format. The first contains a serie of vectors that are randomly generated. The second 
         file contains a serie of 0 and 1 of the same size as the first file. A 0 in the second file means that the vector at the 
         same line in the first file as not being seen before in the file. A 1 means that the vector appears at least one time 
-        before in the first file. 
+        in the first file. 
         
         Inputs:
         -file_in: A string containning the name of the first csv.
@@ -87,7 +87,7 @@ def generate_shape(file_in, file_out, size, dim, min, max, seed):
 
 
 def generate_n(file_in, file_out, size, dim, min, max, n, seed):
-    """This fonction create 2 files in csv format. The first contains a serie of vector that are randomly generated. The second 
+    """This fonction create 2 files in csv format. The first contains a serie of vectors that are randomly generated. The second 
         file contains the same serie but shifted. Meaning that, given a vector in the first file, it will appear at a fix distance 
         later in the second. 
         

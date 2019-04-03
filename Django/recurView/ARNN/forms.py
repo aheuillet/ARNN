@@ -42,6 +42,9 @@ class NetworkForm(forms.ModelForm):
 
     
 class TemplateForm(forms.ModelForm):
+    N = forms.IntegerField(required=True, max_value=settings.MAX_SIZE_RESERVOIR)
+    dim_input = forms.IntegerField(required=True, max_value=settings.MAX_DIM_INPUT)
+    dim_output = forms.IntegerField(required=True, max_value=settings.MAX_DIM_OUTPUT)
     class Meta:
         model = Template
         s = []
@@ -56,14 +59,21 @@ class CorpusForm(forms.ModelForm):
         model = Corpus
         fields = ['name', 'data_in', 'data_out']
 
+class CorpusGenerateForm(forms.Form):
+    name = forms.CharField(max_length=30, required=True)
+    size = forms.IntegerField(label="Length of the corpus",required=True)
+    dim = forms.IntegerField(label="Number of columns", required=True)
+    min_val = forms.IntegerField(label="Minimal value to be generated", required=True)
+    max_val = forms.IntegerField(label="Maximal value to be generated", required=True)
+    seed = forms.IntegerField(label="Seed for random generation", initial=-1)
+
 class TaskForm(forms.Form):
-    user = None
     TYPE_CHOICES = (
         ('Train', 'Train'),
         ('Test', 'Test'),
     )
     kind_task = forms.ChoiceField(choices=TYPE_CHOICES, widget=forms.Select())
-    corpus = forms.ModelChoiceField(queryset=Corpus.objects.all())
+    corpus = forms.ModelChoiceField(label="Corpus matching dimensions", queryset=Corpus.objects.all())
     start = forms.IntegerField(required=True, min_value=0)
     stop = forms.IntegerField(required=True, min_value=1)
 

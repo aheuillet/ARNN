@@ -5,7 +5,7 @@ from .reservoirpy import mat_gen
 from .reservoirpy import ESN
 import json
 import os
-import threading
+from threading import Event, Thread, Lock
 from django.db import models
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -16,34 +16,34 @@ import time
 from .reservoirpy.observables import get_spectral_radius, compute_error_NRMSE
 
 
-class NetworkRunner(threading.Thread):
+class NetworkRunner():
     """This classe intances correspond to a running network. They use the ESN classe to run the network during a task.
         The saving of the matrix of the ESN allow persistency across re-loading of the network.
         The caracteristics of the network are stored inside of the django database.
     """
 
     def __init__(self, N, spectral_radius, dim_input, dim_output, proba, input_bias=True, seed=None, lr=0.3, IS = None):
-        threading.Thread.__init__(self)
+        # threading.Thread.__init__(self)
         if (seed == -1 or seed is None):
             seed = int(time.time()) % 1000
-        self.threadLock = threading.Lock()  # allow for multi threading
+        self.ready = Event()  #: allows for multi threading
+        self.threadLock = Lock()  #: allows for multi threading
         self.play = False
         self.dim_output = dim_output
         self.dim_input = dim_input
         W = mat_gen.generate_internal_weights( N=N, spectral_radius=spectral_radius, proba=proba, seed=seed)
         Win = mat_gen.generate_input_weights(nbr_neuron=N, dim_input=dim_input, input_scaling=IS, proba=proba, input_bias=input_bias, seed=seed)
-        self.states = []  # contains all the states of the reservoir across testing
-        self.input = []  # contains all the inputs given to the reservoir across testing
-        self.expected_output = [] # contains all the corrects ouputs given to the reservoir across testing
-        self.predicted_output = [] # contains all the ouputs the reservoir computed across testing
-        self.calculated_obs = dict() # a dictionnary of all the observables that are already computed
+        self.states = []  #: Contains all the states of the reservoir across testing
+        self.input = []  #: Contains all the inputs given to the reservoir across testing
+        self.expected_output = [] #: Contains all the corrects ouputs given to the reservoir across testing
+        self.predicted_output = [] #: Contains all the ouputs the reservoir computed across testing
+        self.calculated_obs = dict() #: A dictionnary of all the observables that are already computed
         self.network = ESN.ESN(lr, W, Win, input_bias=input_bias, ridge=None, Wfb=None, fbfunc=None)  # the actual network
-        self.task_list = []  # list of trainings and testing to perform
+        self.task_list = []  #: List of trainings and testing to perform
         self.current_task_num = 0
         self.last_iteration = 0
-        self.obs_list = []  # list of observables to compute with their periodicity
-        self.threaded = False  # allow to know if the network shall start a new thread
-        self.pk = -1 # primary key of the network in the database
+        self.obs_list = []  #: List of observables to compute with their periodicity
+        self.pk = -1 #: Primary key of the network in the database
 
     @staticmethod
     def load_network(username, pk, load_auto_save = False):
@@ -52,7 +52,7 @@ class NetworkRunner(threading.Thread):
             Inputs:
             -pk: An int is the primary key of the network entry in the database.
             -username: A string containing the name of the owner of the netxork.
-            -
+            -load_auto_save: This boolean tells if the auto-saved files should be loaded instead of the regular files.
 
             Output:
             The networkRunner corresponding to the database entry.
@@ -66,7 +66,7 @@ class NetworkRunner(threading.Thread):
             network.save_data(os.path.join(network_path, pk))
         else:
             network.load_matrix(os.path.join(network_path, pk))
-            if os.path.exists(os.path.join(network_path, pk+"~")):
+            if os.path.exists(os.path.join(network_path, pk+"~")):#remove the auto-saved files
                 os.remove(os.path.join(network_path, pk+"~"))
         network.pk = pk
         return network
@@ -76,7 +76,7 @@ class NetworkRunner(threading.Thread):
         is computed from path in the setting folder and colunms from the data base.
 
             Inputs:
-            -pk: An int is the primary key of the network entry in the database.
+            -path: An string that is the path to the files to load.
 
         """
         self.network.Wout = np.load(path+"Wout.npy")
@@ -87,7 +87,6 @@ class NetworkRunner(threading.Thread):
     def load_template(template_id):
         """Loads a template from the database and create a corresponding networkrunner from it. The network
         is created by parsing all the parameters contained in the template that concerns the network.
-
             Inputs:
             -template_id: An int that is the primary key of the template entry in the database.
 
@@ -133,9 +132,10 @@ class NetworkRunner(threading.Thread):
         newnet.save(username, network_ID)
 
     def get_observable(self):
-        """return the dictionary that contains all the observables computed at this point
+        """Returns the dictionary that contains all the observables computed at this point.
+
             Output:
-            the attribute "calculated_obs"
+            -The attribute "calculated_obs"
         """
         return self.calculated_obs
 
@@ -146,12 +146,13 @@ class NetworkRunner(threading.Thread):
         and compute them, then add them in the calculated_obs list. This function is threaded,
         so if the controller ask to stop the running, the computation stops.
         """
-        while(self.play and self.current_task_num < len(self.task_list)):
-            if (self.task_list[self.current_task_num][0] == "Train"):
+        print(self.play)
+        while(self.play and self.current_task_num < len(self.task_list)): # if the network is launched and the list of task is not over
+            if (self.task_list[self.current_task_num][0] == "Train"):#if the task is a training task, the ESN is trained on the data and no other attribute is changed
                 self.network.train(inputs=[self.task_list[self.current_task_num][1], ], teachers=[self.task_list[self.current_task_num][2], ], wash_nr_time_step=0, verbose=False)
-            elif (self.task_list[self.current_task_num][0] == "Test"):
+            elif (self.task_list[self.current_task_num][0] == "Test"):#if the task is a testing task, the ESN is runned ont the data, then the results, the input given and the expected ouputs are added to the respective lists
                 outputs, all_in_state = self.network.run(inputs=[self.task_list[self.current_task_num][1], ])
-                for i in range(len(self.task_list[self.current_task_num][1])):
+                for i in range(len(self.task_list[self.current_task_num][1])):#add all information to the respective lists
                     self.input.append(self.task_list[self.current_task_num][1][i])
                     self.expected_output.append(self.task_list[self.current_task_num][2][i])
                     self.predicted_output.append(outputs[0][i])
@@ -163,7 +164,7 @@ class NetworkRunner(threading.Thread):
             if (self.task_list[self.current_task_num - 1][0] == "test"):
                 self.last_iteration += len(self.task_list[self.current_task_num - 1][2])
             self.auto_save()
-            print(self.calculated_obs)
+        self.ready.set()
         self.play = False
 
     def compute_all_observables(self, begin):
@@ -185,12 +186,14 @@ class NetworkRunner(threading.Thread):
             Ouputs:
             returns False if it couldn't add the task, True otherwise.
         """
-        print("\n", path, "\n")
-        if ((task=="Test") and (self.network.Wout is None) and not("Train" in [i[0] for i in self.task_list])):#check if the network has been trained before running
+        print((task=="Test"))
+        print(self.network.Wout)
+        print((self.network.Wout.all() == None))
+        print(("Train" in [i[0] for i in self.task_list]))
+        if ((task=="Test") and (self.network.Wout.all() == None) and not("Train" in [i[0] for i in self.task_list])):#check if the network has been trained before running
             return False
         if not(self.play):#a task can only be added if the network is not running
             inp, out = self.load_corpus(path)
-            print(inp, out, inp.shape, out.shape)
             if (inp.shape[1] != self.dim_input) or (out.shape[1] != self.dim_output):
                 return False
             self.task_list.append([task, inp[start:stop], out[start:stop]])
@@ -199,12 +202,18 @@ class NetworkRunner(threading.Thread):
 
     def play_pause(self):
         """Launch the computation if the network is not running or stop it otherwise"""
+        print("plaaaaaay")
         self.threadLock.acquire()
         self.play = not(self.play)
         self.threadLock.release()
-        self.resume_training()
+        if self.play:
+            thread = Thread(target=self.resume_training)
+            thread.start()
+            self.ready.wait()
+        return 'Played'
 
-    def add_observable(self, observable, periodicity): #
+
+    def add_observable(self, observable, periodicity): 
         """Add a new observable to compute to the list. If the observable is already in the liste,
         this function only change the periodicity of the computation of the observable.
 
@@ -239,6 +248,13 @@ class NetworkRunner(threading.Thread):
             del self.calculated_obs[observable]
 
     def compute_observable(self, observable):
+        """Compute an observable at a specific point (self.x), using the functions defined in the observable.py file, in /reservoirpy/ folder.
+
+        Input:
+        -observable: A string containing the name of the observable to compute.
+        Output:
+        -A vector containing the asked observable.
+        """
         if (observable == "Spectral Radius"):
             return np.array([get_spectral_radius(self.network.W)]).tolist()
         elif (observable == 'Predicted Output'):
@@ -264,6 +280,13 @@ class NetworkRunner(threading.Thread):
         return 0
 
     def size_observable(self, observable):
+        """Compute the size of a observable defined in the observable.py file, in /reservoirpy/ folder.
+
+        Input:
+        -observable: A string containing the name of the observable to compute.
+        Output:
+        -The dimension of the asked observable.
+        """
         if (observable == "Spectral Radius"):
             return 1
         elif (observable == 'Predicted Output'):
@@ -284,6 +307,9 @@ class NetworkRunner(threading.Thread):
             return 1
 
     def auto_save(self):
+        """This function saves all the matrix of a network in tempoary files. 
+            It also update the network in the data base to notify that there are unsaved data.
+        """
         try :
             net = get_object_or_404(Network, pk=self.pk)
         except :
@@ -297,6 +323,12 @@ class NetworkRunner(threading.Thread):
 
 
     def save(self, username, name):
+        """Write a network onto the disk and remove all auto-saved references.
+
+        Input:
+        -username: A string containing the name of the owner of the network.
+        -name: The name of the network to save.
+        """
         path = os.path.join(os.path.join(settings.PATH_TO_USERS_FOLDER, str(username)), settings.PATH_TO_NETWORKS)
         file = os.path.join(path, str(name)) 
         self.save_data(file)       
@@ -311,13 +343,18 @@ class NetworkRunner(threading.Thread):
         net.save()
 
     def save_data(self, file):
+        """Write a network onto the disk at the location given.
+
+        Input:
+        -file: A string containing the path to the network.
+        """
         os.makedirs(os.path.dirname(file), mode=0o700, exist_ok=True)
         np.save(file+"Wout.npy", self.network.Wout)
         np.save(file+"Win.npy", self.network.Win)
         np.save(file+"W.npy", self.network.W)
 
-    def run(self):
-        """Allow to play/pause the network with threading"""
-        print("play")
-        self.threaded = True
-        self.play_pause()
+    # def run(self):
+    #     """Allow to play/pause the network with threading"""
+    #     print("play")
+    #     self.threaded = True
+    #     return self.play_pause()
