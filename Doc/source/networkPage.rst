@@ -59,7 +59,11 @@ Network Control
 
 First, at least one *Training task* has to be assigned to the network in order to create an output matrix associated. If the network is saved then reloaded, it can directly be launch with a *Test* task. A *Test task* has to be lauched with every *Training task*, otherwise it fails.
 
-Once a task is assigned to the network, *Observables* can be added, by click on *Add Observable*, in order to plot graphs corresponding to the data of the current network whose the selection can be carried out by clicking in the right tab. Each observable elicits a GUI.
+Once a task is assigned to the network, *Observables* can be added, by click on *Add Observable*, in order to plot graphs corresponding to the data of the current network whose the selection can be carried out by clicking in the right tab.
+
+.. image:: /image/observable.png
+
+Each observable elicits a GUI.
 
 .. image:: /image/gui.png
 
@@ -67,10 +71,6 @@ Lastly, the network can be run by clicking on the play button, and some pieces o
 
 .. image:: /image/run.png
 
-The graphic windows at the core is generate by *Bokeh*, which includes somes options their website features in the :ref:`Links`, which can also be opened up by clicking on the *Bokeh* logo on the toolbar. On the settings area, the loop enables repeat of the last task.
+The graphic windows at the core is generate by *Bokeh*, which includes somes options their website features in the :ref:`Links`, which can also be opened up by clicking on the *Bokeh* logo on the toolbar. On the settings area, the loop enables a repeat of the last task.
 
 The user can close the GUI windows if they are judged annoying.
-
-.. image:: /image/observable.png
-
-The data to be displayed can be chosen and the periodicity of the plot has to be specified. As several graphs may be needed to be displayed, some graphic windows are available to the user.

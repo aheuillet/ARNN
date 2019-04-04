@@ -231,7 +231,7 @@ class NetworkRunControl(View):
             }
             for i in range(len((list(np.array(data[1]).T)))):
                 data2["y"+str(i)] = [float(a) for a in (list(np.array(data[1]).T[i]))]
-
+            print(data2)
             return JsonResponse(data2, safe=False)
 
 

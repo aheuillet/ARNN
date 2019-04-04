@@ -26,10 +26,21 @@ Futhermore, the data is persistent even if the server crashes thanks to the mana
 Network managing
 ++++++++++++++++
 
-Développez ici les fichiers ~ et le compte pour le corpus MakckeyGlass
-
-
 A network is managed by *class NetworkRunner* found in *network.py*. The class corresponds to a layer containing the tank of neurons corresponding to *class ESN*. The caracteristics of the network are stored inside the database. If you want to see a complete description, go to :ref:`modindex` and select *ARNN.network* module.
+
+First and foremost, *MackeyGlass* is provided by a reserved account whose *Username* is *admin*. All new created account get the *admin* corpera and its own. See *settings.py* and migration *0022*.
+
+.. image:: /image/mackeyglass.png
+
+Thanks to this account, the task form shares *MackeyGlass* corpus, see *TaskForm* in *forms.py*.
+
+.. image:: /image/sharedcorpus.png
+
+The networks are saved from three different files. Each network saved-file name is in NPY format and begins with te number corresponding to the network primarey key in the database, followed by *Win*, *Wout* or *W* in regards to the data representing by the matrix.
+
+Some different files can appear nonetheless with a ~ just after the primarey key, they are temporary files. Their use is concerning a crash of the server, or if the user does not choose the save option when the network tab is closed. If it happened, the user could choose which network version to load, the saved or temporary one.
+
+.. image:: /image/unsaved.png
 
 If a new network option should be added, this could be done following some steps.
 In the first place, you will need to stop the server in order to apply the update.

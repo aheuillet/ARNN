@@ -21,7 +21,7 @@ Welcome to ARNN's documentation!
    links
    license
 
-.. note:: This documentation may be non-exhaustive. Please send your suggestions to : clients@nowhere.com
+.. note:: This documentation may be non-exhaustive. Please send your suggestions to : xavier.hinaut@inria.fr
 
 
 Indices and tables

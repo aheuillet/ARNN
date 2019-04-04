@@ -147,11 +147,13 @@ class NetworkRunner():
         so if the controller ask to stop the running, the computation stops.
         """
         print(self.play)
+        print(self.task_list)
         while(self.play and self.current_task_num < len(self.task_list)): # if the network is launched and the list of task is not over
             if (self.task_list[self.current_task_num][0] == "Train"):#if the task is a training task, the ESN is trained on the data and no other attribute is changed
                 self.network.train(inputs=[self.task_list[self.current_task_num][1], ], teachers=[self.task_list[self.current_task_num][2], ], wash_nr_time_step=0, verbose=False)
             elif (self.task_list[self.current_task_num][0] == "Test"):#if the task is a testing task, the ESN is runned ont the data, then the results, the input given and the expected ouputs are added to the respective lists
                 outputs, all_in_state = self.network.run(inputs=[self.task_list[self.current_task_num][1], ])
+                print(all_in_state)
                 for i in range(len(self.task_list[self.current_task_num][1])):#add all information to the respective lists
                     self.input.append(self.task_list[self.current_task_num][1][i])
                     self.expected_output.append(self.task_list[self.current_task_num][2][i])
@@ -174,7 +176,7 @@ class NetworkRunner():
                     self.calculated_obs[self.obs_list[i][0]][1].append(self.compute_observable(self.obs_list[i][0]))
                     self.calculated_obs[self.obs_list[i][0]][0].append(x)
 
-    def add_task(self, path, start, stop, task):
+    def add_task(self, path, start, stop, task, demo=False):
         """Add a new task to the task_list.
 
             Inputs:
@@ -186,11 +188,7 @@ class NetworkRunner():
             Ouputs:
             returns False if it couldn't add the task, True otherwise.
         """
-        print((task=="Test"))
-        print(self.network.Wout)
-        print((self.network.Wout.all() == None))
-        print(("Train" in [i[0] for i in self.task_list]))
-        if ((task=="Test") and (self.network.Wout.all() == None) and not("Train" in [i[0] for i in self.task_list])):#check if the network has been trained before running
+        if (not demo and (task=="Test") and (self.network.Wout.all() == None) and not("Train" in [i[0] for i in self.task_list])):#check if the network has been trained before running
             return False
         if not(self.play):#a task can only be added if the network is not running
             inp, out = self.load_corpus(path)

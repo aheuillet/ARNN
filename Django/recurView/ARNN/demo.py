@@ -10,6 +10,7 @@ from .network import NetworkRunner
 import os
 
 net = NetworkRunner( N=100, spectral_radius=10, dim_input=1, dim_output=1, proba=0.1, seed = 42)
+net.network.Wout = None
 
 def make_demo_plot():
     source = AjaxDataSource(data_url=resolve_url('demo_data'),
@@ -44,13 +45,13 @@ def demo(request):
     plots.append({'plot': make_demo_plot(), 'name':"spectral_radius", 'verbose_name':"Input"})
     net.add_observable("Input", 1)
 
-    net.add_task(data_path, 0, 100, "Train")
-    net.add_task(data_path, 100, 120, "Test")
-    net.add_task(data_path, 1, 23, "Train")
-    net.add_task(data_path, 0, 80, "Test")
-    net.add_task(data_path, 20, 115, "Train")
-    net.add_task(data_path, 49, 130, "Test")
-    net.add_task(data_path, 90, 143, "Train")
-    net.add_task(data_path, 42, 99, "Test")
+    net.add_task(data_path, 0, 100, "Train", demo=True)
+    net.add_task(data_path, 100, 120, "Test", demo=True)
+    net.add_task(data_path, 1, 23, "Train", demo=True)
+    net.add_task(data_path, 0, 80, "Test", demo=True)
+    net.add_task(data_path, 20, 115, "Train", demo=True)
+    net.add_task(data_path, 49, 130, "Test", demo=True)
+    net.add_task(data_path, 90, 143, "Train", demo=True)
+    net.add_task(data_path, 42, 99, "Test", demo=True)
     net.play_pause()
     return render(request, "ARNN/demo.html", {"plots": plots})

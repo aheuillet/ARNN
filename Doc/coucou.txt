@@ -1,0 +1,20 @@
+The web app have been built to allow the developpers to add observables to the app easily. This can be done by following these steps :
+In the first place, you will need to stop the server in order to apply the update.
+All observable are declared in the database, as an entry in the database’s table of the observables.
+The first modification you will have to do in order to add your observable is to go to the *\Django\recurView\* directory, where you have installed the web app. The run the command :
+.. image:: /image/image1.PNG
+This will create a empty migration file in the *\Django\recurView\ARNN\migrations* directory. Open it, you will see a file similar to this one :  
+.. image:: /image/image2.PNG
+Now, the easiest way to add an observable to the data base is to copy and past the file bellow into your migration file, and to change the name  *your_observable* by the actual name of your new observable.
+ .. image:: /image/image3.PNG
+You can add several observables by creating an other observable object and saving it.
+Then you will need to go to the *\Django\recurView\ARNN\reservoirpy* folder and open the *observable.py* file. Then you will have to write here the function that compute your observable. 
+Once this is done you will need to go the *\Django\recurView\ARNN\* folder and open the *network.py* file. Here you will find the definition of the function *compute_observable*.
+.. image:: /image/image4.PNG
+Here you can add a new case for your observable and call your function defined earlier. Pay attention to the name of your observable in the data base, it is the exact same string that will be send to this function. Your observable must be contained in a python-like array (not numpy array) in order to sen dit to the front end.
+Now that your observable can be computed, you need to specify it’s size, as the bokeh will need it to display it correctly. The size correspond to the dimension of the observable, a scalar having size 1. The size definition takes place in the function bellow *compute_observable*, called *size_observable*. There the declaration follow the same process as in *compute_observable*, just add a naw case to the function maching your observable’s name.
+.. image ::/image/image5.PNG
+Now, all the implementation have been done. All that’s left to do is to do the migrations, by going back in the *\Django\recurView\* folder and to apply the migrations by running the following command :
+.. image ::/image/image6.PNG
+Your new observable have been added, now you can restart the webapp and start using it.
+
