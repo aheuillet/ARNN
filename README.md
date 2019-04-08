@@ -14,7 +14,7 @@ For Debian-based systems :
 ```bash
 sudo apt install python3 && sudo apt install python3-pip
 ```
-or for MacOS users :
+or for macOS users :
 ```bash
 brew install python3
 ```
@@ -45,4 +45,16 @@ python3 manage.py runserver
 ```
 The website should now be available on your localhost and listening to port 8000.
 
-**WARNING: Django built-in webserver should not be used for direct exposure of the website on the Internet. You should use a more advance webserver such as Apache or Nginx as a reverse-proxy and provide SSL cerificates to get HTTPS access.**
+**WARNING: Django built-in webserver should not be used for direct exposure of the website on the Internet. You should use a more advance webserver such as Apache or Nginx as a reverse-proxy and provide SSL certificates to get HTTPS access.**
+
+## Compiling the doc
+The documentation sources are contained in the `Doc/sources`.
+To compile the doc in HTML, first you need to install **Sphinx** :
+```bash
+pip3 install sphinx
+```
+Then, go to the `Doc/` folder and execute the following command in a shell :
+```bash
+make html
+```
+Once this is done, go to the `Doc/build/html` and open "index.html" in a web browser to acess the doc.
