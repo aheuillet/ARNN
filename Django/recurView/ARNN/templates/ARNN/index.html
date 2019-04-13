@@ -492,7 +492,8 @@ Pb pour la reduction des fenetres-->
                         corpusID: $('#id_corpus').val(),
                         start: $('#id_start').val(),
                         stop: $('#id_stop').val(),
-                        task: $('#id_kind_task').val()
+                        task: $('#id_kind_task').val(),
+                        reset_state: $('#id_reset_state').val()
                     },
                     success: function () {
                         window.location = local_route;
@@ -807,6 +808,10 @@ Pb pour la reduction des fenetres-->
                         let corpustd = document.createElement("td");
                         corpustd.innerText = json_data["corpus"];
                         row.appendChild(corpustd);
+
+                        let reset_statetd = document.createElement("td");
+                        reset_statetd.innerText = json_data["reset_state"];
+                        row.appendChild(reset_statetd);
 
                         let starttd = document.createElement("td");
                         starttd.innerText = json_data["start"];
