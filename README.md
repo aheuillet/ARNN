@@ -6,10 +6,10 @@ For debian users, an install script `setup.sh` is provided in `Django/recurView/
 
 If necessary, you can also setup the website following these steps :
 
-**We will supposed that macOS users, are using the package manager Brew**
+**We will suppose that macOS users, are using the package manager Brew**
 If you're using Brew, go get it [here](https://brew.sh/), it's an awesome tool !
 
-First of all you need to make sure that **Python 3** and **PIP** are present on your system :
+First of all, you need to make sure that **Python 3** and **PIP** are present on your system :
 For Debian-based systems :
 ```bash
 sudo apt install python3 && sudo apt install python3-pip
@@ -45,7 +45,7 @@ python3 manage.py runserver
 ```
 The website should now be available on your localhost and listening to port 8000.
 
-**WARNING: Django built-in webserver should not be used for direct exposure of the website on the Internet. You should use a more advance webserver such as Apache or Nginx as a reverse-proxy and provide SSL certificates to get HTTPS access.**
+**:warning: Django built-in webserver should not be used for direct exposure of the website on the Internet. You should use a more advanced webserver such as Apache or Nginx as a reverse-proxy and provide SSL certificates to get HTTPS access.**
 
 ## Compiling the doc
 The documentation sources are contained in the `Doc/sources`.
