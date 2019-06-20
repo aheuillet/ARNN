@@ -7,7 +7,7 @@ For debian users, an install script `setup.sh` is provided in `Django/recurView/
 If necessary, you can also setup the website following these steps :
 
 **We will suppose that macOS users, are using the package manager Brew**
-If you're using Brew, go get it [here](https://brew.sh/), it's an awesome tool !
+If you're not using Brew, go get it [here](https://brew.sh/), it's an awesome tool !
 
 First of all, you need to make sure that **Python 3** and **PIP** are present on your system :
 For Debian-based systems :
